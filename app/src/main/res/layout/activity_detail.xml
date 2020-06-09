@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <FrameLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:paddingTop="25dp"
             android:visibility="gone"
             android:background="?attr/colorBackgroundThemed"
@@ -29,6 +29,10 @@
             android:layout_height="75dp">
 
             <ImageView
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:id="@+id/iv_top_back_button"
+                app:layout_constraintStart_toStartOf="parent"
                 android:onClick="@{() -> viewModel.onBackEvent()}"
                 android:layout_marginStart="@dimen/default_right_margin"
                 style="@style/ClickableImageView"
@@ -37,16 +41,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
-            <TextView
+            <com.dansdev.library_autofittextview.AutofitTextView
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:singleLine="true"
+                android:ellipsize="end"
+                app:minTextSize="13sp"
+                app:layout_constraintStart_toEndOf="@id/iv_top_back_button"
+                app:layout_constraintEnd_toEndOf="parent"
                 android:text="@{viewModel.movie.title}"
                 android:textColor="@color/black"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="25dp"
                 android:fontFamily="@font/proxima_nova_bold"
                 android:textSize="23sp"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"/>
 
-        </FrameLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.core.widget.NestedScrollView
         style="@style/CustomRecyclerStyle"
@@ -129,7 +142,8 @@
                 app:layout_constraintTop_toTopOf="@id/overlap_space_fab"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintHorizontal_bias="0.8"
-                android:src="@drawable/bookmark_selector"
+                android:onClick="@{() -> viewModel.onBookmarkEvent()}"
+                android:src="@{viewModel.bookmarked ? @drawable/ic_bookmark_filled :  @drawable/ic_bookmark_outlined}"
                 app:layout_constraintEnd_toStartOf="@id/iv_poster_movie"
                 app:backgroundTint="@color/colorAccent"
                 android:layout_width="wrap_content"

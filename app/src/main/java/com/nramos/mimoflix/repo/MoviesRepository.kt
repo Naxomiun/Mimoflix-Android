@@ -1,16 +1,42 @@
 package com.nramos.mimoflix.repo
 
 
+import android.util.Log
 import com.nramos.mimoflix.api.ApiService
 import com.nramos.mimoflix.api.RecommendedProvider
 import com.nramos.mimoflix.model.*
 import com.nramos.mimoflix.model.movie.Movie
+import com.nramos.mimoflix.persistance.FavoriteDao
+import com.nramos.mimoflix.persistance.MovieDB
 
 class MoviesRepository(
     private val apiService: ApiService,
     private val roomDao: FavoriteDao,
     private val recommendedProvider: RecommendedProvider
 ) : BaseRepository() {
+
+
+    suspend fun getAllFavorites(): List<MovieDB>? {
+        return favoritesRoomCall {
+            roomDao.getAllMovies()
+        }
+    }
+
+    suspend fun deleteFavorite(movie: MovieDB) : Boolean? {
+        return transactionRoomCall {
+            roomDao.deleteMovie(movie)
+        }
+    }
+
+    suspend fun saveFavorite(movie: MovieDB) : Boolean? {
+        return transactionRoomCall {
+            roomDao.insertMovie(movie)
+        }
+    }
+
+    suspend fun checkForId(id: Int) : Boolean? {
+        return roomDao.checkIfFavorite(id)>0
+    }
 
     suspend fun getTrailer(id : Int) : Trailer? {
         return trailerSafeCall {

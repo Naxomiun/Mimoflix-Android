@@ -9,9 +9,7 @@ import androidx.viewpager2.widget.ViewPager2
 import coil.api.load
 import coil.transform.BlurTransformation
 import coil.transform.RoundedCornersTransformation
-import com.google.android.material.button.MaterialButton
 import com.nramos.mimoflix.utils.Constants
-import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
 
 @BindingAdapter("items")
 fun setRecyclerBindingItems(recyclerView: RecyclerView, items: List<RecyclerDataBindingItem>?) {
@@ -22,21 +20,6 @@ fun setRecyclerBindingItems(recyclerView: RecyclerView, items: List<RecyclerData
     }
     adapter.updateData(items.orEmpty())
     recyclerView.scheduleLayoutAnimation()
-}
-
-@BindingAdapter("items", "dotsIndicator")
-fun setViewpagerBindingItems(viewpager: ViewPager2, items: List<RecyclerDataBindingItem>?, dotsIndicator: DotsIndicator) {
-    Log.e("VIEWPAGER", "BIND")
-    var adapter = (viewpager.adapter as? RecyclerDataBindingAdapter)
-    if (adapter == null) {
-        viewpager.offscreenPageLimit = 5
-        adapter = RecyclerDataBindingAdapter()
-        viewpager.adapter = adapter
-        dotsIndicator.setViewPager2(viewpager)
-    }
-
-    adapter.updateData(items.orEmpty())
-
 }
 
 @BindingAdapter("binding:urlSrc", "binding:cornerRadius", "binding:blurRadius")

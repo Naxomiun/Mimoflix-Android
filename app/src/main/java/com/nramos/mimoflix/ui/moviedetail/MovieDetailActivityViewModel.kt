@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nramos.mimoflix.binding.RecyclerDataBindingItem
+import com.nramos.mimoflix.extension.mapToFavorite
 import com.nramos.mimoflix.extension.toBindingItem
 import com.nramos.mimoflix.model.*
 import com.nramos.mimoflix.model.movie.RelatedMovieViewModel
@@ -15,9 +16,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-
 class MovieDetailActivityViewModel(
-
     private val moviesRepository: MoviesRepository
 ) : ViewModel() {
 
@@ -28,6 +27,9 @@ class MovieDetailActivityViewModel(
 
     private val _trailer = MutableLiveData<Trailer>()
     val trailer : LiveData<Trailer> get() = _trailer
+
+    private val _bookmarked = MutableLiveData<Boolean>()
+    val bookmarked : LiveData<Boolean> get() = _bookmarked
 
     private val _relatedMovies = MutableLiveData<List<RecyclerDataBindingItem>>()
     val relatedMovies : LiveData<List<RecyclerDataBindingItem>> get() = _relatedMovies
@@ -51,6 +53,10 @@ class MovieDetailActivityViewModel(
         viewModelScope.launch {
             _movie.value = withContext(Dispatchers.IO) {
                 moviesRepository.getMovieDetail(movieId)
+            }
+
+            _bookmarked.value = withContext(Dispatchers.IO) {
+                moviesRepository.checkForId(movieId) ?: false
             }
 
             _actors.value = withContext(Dispatchers.IO) {
@@ -89,8 +95,25 @@ class MovieDetailActivityViewModel(
         }
     }
 
-    fun bookmarkMovie() {
+    fun onBookmarkEvent() {
+        viewModelScope.launch {
+            _bookmarked.value = withContext(Dispatchers.IO) {
+                val favoriteExists = moviesRepository.checkForId(movieId) ?: false
+               _movie.value?.let {
+                   val movieDB = it.mapToFavorite()
+                   if(favoriteExists) {
+                       moviesRepository.deleteFavorite(movieDB)
+                   } else {
+                       moviesRepository.saveFavorite(movieDB)
+                   }
+               }
+                !favoriteExists
+           }
 
+            _bookmarkAction.value = withContext(Dispatchers.IO) {
+                SingleEvent(moviesRepository.checkForId(movieId) ?: false)
+            }
+        }
     }
 
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
+<layout
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -13,7 +14,7 @@
         <LinearLayout
             android:layout_gravity="center"
             android:orientation="vertical"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:ignore="UselessParent">
 
@@ -22,16 +23,16 @@
                 android:layout_marginBottom="5dp"
                 android:layout_gravity="center"
                 app:lottie_rawRes="@raw/bookmarked"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="false"
                 android:layout_height="wrap_content"/>
 
             <TextView
+                android:id="@+id/tv_string_message_dialog"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="28sp"
-                android:text="Has añadido la película a tus favoritos"
                 android:fontFamily="@font/raleway_bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>

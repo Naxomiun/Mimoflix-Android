@@ -8,7 +8,6 @@ import com.nramos.mimoflix.R
 import com.nramos.mimoflix.databinding.ItemGenreRecommendedBinding
 import com.nramos.mimoflix.databinding.ItemGenreSimpleBinding
 import com.nramos.mimoflix.extension.loadAsyncImage
-import com.nramos.mimoflix.extension.loadImageWithGlow
 import com.nramos.mimoflix.model.movie.Movie
 
 class MovieAdapter(
@@ -40,7 +39,6 @@ class MovieAdapter(
         private val binding = ItemGenreRecommendedBinding.bind(itemView)
         override fun bind(movie : Movie) {
             binding.apply {
-                ivPosterMovie.loadImageWithGlow(movie.posterImage, cvPosterMovie)
                 tvTitle.text = movie.title
                 rbMovie.rating = movie.calculatePopularity()
                 cvPosterMovie.setOnClickListener {

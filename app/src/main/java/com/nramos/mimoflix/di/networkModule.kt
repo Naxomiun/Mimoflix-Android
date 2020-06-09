@@ -39,7 +39,7 @@ val networkModule = module {
     }
 
     single {
-        MoviesRepository(get(), get())
+        MoviesRepository(get(), get(), get())
     }
 
     factory {

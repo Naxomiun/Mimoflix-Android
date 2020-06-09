@@ -5,10 +5,15 @@ import com.nramos.mimoflix.BR
 import com.nramos.mimoflix.R
 import com.nramos.mimoflix.binding.RecyclerDataBindingItem
 import com.nramos.mimoflix.model.ActorViewModel
-import com.nramos.mimoflix.model.movie.PopularMovieViewModel
-import com.nramos.mimoflix.model.movie.PopularPromoMovieViewModel
-import com.nramos.mimoflix.model.movie.RecommendedMovieViewModel
-import com.nramos.mimoflix.model.movie.RelatedMovieViewModel
+import com.nramos.mimoflix.model.MovieDetail
+import com.nramos.mimoflix.model.movie.*
+import com.nramos.mimoflix.persistance.MovieDB
+
+fun MovieDetail.mapToFavorite() = MovieDB(
+    id = this.id ?: 0,
+    title = this.title,
+    image = this.posterImage
+)
 
 fun PopularPromoMovieViewModel.toBindingItem() = RecyclerDataBindingItem(
     item = this,

@@ -14,7 +14,7 @@ abstract class AppRoomDataBase : RoomDatabase() {
     companion object {
 
         const val DB_VERSION = 1
-        private const val DB_NAME = "Mimoflix.db"
+        private const val DB_NAME = "MimoflixV1.db"
 
         @Volatile
         private var INSTANCE: AppRoomDataBase? = null

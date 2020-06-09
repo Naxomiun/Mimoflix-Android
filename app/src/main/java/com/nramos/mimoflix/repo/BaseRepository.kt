@@ -4,6 +4,7 @@ import android.util.Log
 import com.nramos.mimoflix.extension.safeSubList
 import com.nramos.mimoflix.model.*
 import com.nramos.mimoflix.model.movie.Movie
+import com.nramos.mimoflix.persistance.MovieDB
 import retrofit2.Response
 
 open class BaseRepository {
@@ -91,4 +92,24 @@ open class BaseRepository {
         }
         return emptyList()
     }
+
+    suspend fun favoritesRoomCall(function: suspend() -> List<MovieDB>) : List<MovieDB>? {
+        runCatching {
+            function.invoke()
+        }.onSuccess {
+            return it
+        }
+        return emptyList()
+    }
+
+    suspend fun transactionRoomCall(function: suspend() -> Unit) : Boolean? {
+        runCatching {
+            function.invoke()
+        }.onSuccess {
+            return true
+        }
+        return false
+    }
+
+
 }

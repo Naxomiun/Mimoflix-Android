@@ -14,10 +14,14 @@
     <string name="poster_content_description">Imagen promocional del contenido</string>
     <string name="string_peliculas">Películas</string>
     <string name="string_series">Series</string>
+
+
+    <!-- Movie detail -->
     <string name="detail_synosis_title">Sinópsis</string>
     <string name="detail_cast_title">Reparto</string>
     <string name="detail_play_trailer">Reproducir trailer</string>
     <string name="detail_play_trailer_not_available">Trailer no disponible</string>
     <string name="detail_related_movies">Películas relacionadas</string>
+    <string name="added_to_favorites">Se ha añadido \'%1$s\' a tus favoritos</string>
 
 </resources>

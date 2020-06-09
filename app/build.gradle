@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 29
@@ -39,11 +39,6 @@ android {
         dataBinding = true
     }
 
-    configurations.all() {
-        resolutionStrategy.force "org.antlr:antlr4-runtime:4.5.3"
-        resolutionStrategy.force "org.antlr:antlr4-tool:4.5.3"
-    }
-
 }
 
 dependencies {
@@ -66,10 +61,6 @@ dependencies {
     // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
 
-    // Glide
-    implementation 'com.github.bumptech.glide:glide:4.11.0'
-    kapt 'com.github.bumptech.glide:compiler:4.11.0'
-
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:2.7.1"
     implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
@@ -81,14 +72,8 @@ dependencies {
     implementation "org.koin:koin-core:2.1.5"
     implementation "org.koin:koin-androidx-viewmodel:2.1.5"
 
-    // Palete KTx
-    implementation "androidx.palette:palette-ktx:1.0.0"
-
     //AutoFit TextView
     implementation 'com.github.Daniil-Pavenko:androidx-autofittextview:1.0.0'
-
-    //Viewpager dots
-    implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
 
     //Lottie
     implementation 'com.airbnb.android:lottie:3.4.0'

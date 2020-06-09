@@ -10,10 +10,12 @@ import com.nramos.mimoflix.databinding.ActivityDetailBinding
 import com.nramos.mimoflix.extension.goTo
 import com.nramos.mimoflix.extension.observe
 import com.nramos.mimoflix.extension.setTranslucentActivity
+import com.nramos.mimoflix.ui.favoritedialog.FavoriteDialogFragment
 import com.nramos.mimoflix.ui.trailer.TrailerActivity
 import org.koin.androidx.scope.lifecycleScope
 import org.koin.androidx.viewmodel.scope.viewModel
 
+private const val FAVORITE_FRAGMENT_TAG = "added_to_favorite"
 
 class MovieDetailActivity : AppCompatActivity() {
 
@@ -42,6 +44,17 @@ class MovieDetailActivity : AppCompatActivity() {
                 }
             }
 
+            observe(bookmarkAction){
+                it.getContentIfNotHandled()?.let { added ->
+                    if(added) {
+                        viewModel.movie.value.let {movieDetail ->
+                            val favoriteDialogFragment: FavoriteDialogFragment = FavoriteDialogFragment.newInstance(movieDetail?.title ?: "")
+                            favoriteDialogFragment.show(supportFragmentManager, FAVORITE_FRAGMENT_TAG)
+                        }
+                    }
+                }
+            }
+
             observe(backAction) {
                 if(it) {
                     onBackPressed()
@@ -53,7 +66,6 @@ class MovieDetailActivity : AppCompatActivity() {
                     supportStartPostponedEnterTransition()
                 }
             }
-
         }
 
         setScrollListener()
