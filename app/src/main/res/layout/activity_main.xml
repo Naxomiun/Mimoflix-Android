@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_root"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:background="?attr/colorBackgroundThemed"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/navigation_graph" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:background="@drawable/top_rounded_corners"
+        android:layout_gravity="bottom"
+        app:itemRippleColor="@color/colorAccent"
+        android:id="@+id/bottom_navigation"
+        app:elevation="5dp"
+        app:itemIconTint="@drawable/bottom_nav_color_selector"
+        android:layout_width="match_parent"
+        app:labelVisibilityMode="unlabeled"
+        app:itemIconSize="24dp"
+        android:layout_height="70dp"
+        app:menu="@menu/bottom_nav_tabs"/>
+
+</FrameLayout>

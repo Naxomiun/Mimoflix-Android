@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.nramos.mimoflix.model.movie.PopularPromoMovieViewModel" />
+    </data>
+
+    <ImageView
+        android:nestedScrollingEnabled="false"
+        android:paddingStart="@dimen/viewpager_item_margin"
+        android:paddingEnd="@dimen/viewpager_item_margin"
+        android:scaleType="centerCrop"
+        app:drawableSrc="@{viewModel.movie.posterImage}"
+        app:cornerRadius="@{@dimen/viewpager_item_corner_radius}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</layout>

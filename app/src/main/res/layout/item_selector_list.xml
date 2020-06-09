@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <layout>
+<androidx.recyclerview.widget.RecyclerView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:listitem="@layout/item_selector"
+    android:id="@+id/rv_selector"
+    android:nestedScrollingEnabled="false"
+    android:orientation="horizontal"
+    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipToPadding="false"
+    android:overScrollMode="never"
+    android:paddingTop="10dp"
+    android:paddingBottom="22dp"
+    android:paddingStart="19dp"
+    android:paddingEnd="19dp" />
+    </layout>

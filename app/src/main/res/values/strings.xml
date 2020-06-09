@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Mimoflix</string>
+
+    <!-- Fragment Genres -->
+    <string name="fragment_genres_recomendados">Recomendados</string>
+
+    <!-- Fragment movies -->
+    <string name="fragment_movies_now_playing">Now playing</string>
+    <string name="fragment_movies_popular">Popular</string>
+    <string name="fragment_movies_top_rated">Top Rated</string>
+    <string name="fragment_movies_upcoming">Upcoming</string>
+
+    <!-- Miscelaneous -->
+    <string name="poster_content_description">Imagen promocional del contenido</string>
+    <string name="string_peliculas">Películas</string>
+    <string name="string_series">Series</string>
+    <string name="detail_synosis_title">Sinópsis</string>
+    <string name="detail_cast_title">Reparto</string>
+    <string name="detail_play_trailer">Reproducir trailer</string>
+    <string name="detail_play_trailer_not_available">Trailer no disponible</string>
+    <string name="detail_related_movies">Películas relacionadas</string>
+
+</resources>

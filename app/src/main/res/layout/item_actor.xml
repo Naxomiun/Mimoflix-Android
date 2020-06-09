@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        style="@style/ClickableImageView"
+        android:scaleType="centerCrop"
+        android:id="@+id/iv_actor"
+        android:layout_marginEnd="@dimen/cast_margin_end"
+        android:layout_width="@dimen/cast_image_height_width"
+        android:layout_height="@dimen/cast_image_height_width"/>
+</layout>

@@ -1,0 +1,152 @@
+<resources>
+
+    <style name="Mimoflix.Light" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlHighlight">@color/colorAccent</item>
+        <item name="colorBackgroundThemed">@color/lightBackgroundColor</item>
+        <item name="android:statusBarColor">?attr/colorBackgroundThemed</item>
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowSharedElementEnterTransition">@transition/arc_transition</item>
+        <item name="android:windowSharedElementExitTransition">@transition/arc_transition</item>
+    </style>
+
+    <style name="Mimoflix.Dark" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="DetailActivity" parent="Mimoflix.Light">
+        <item name="android:windowSharedElementEnterTransition">@transition/arc_transition</item>
+        <item name="android:windowSharedElementExitTransition">@transition/arc_transition</item>
+    </style>
+
+    <style name="TrailerActivity" parent="Mimoflix.Light">
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="TitleCollapsedStyle" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">25sp</item>
+        <item name="fontFamily">@font/roboto_condensed_bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TitleExpandedStyle" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">40sp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="fontFamily">@font/roboto_condensed_bold</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.MovieCardViewStyle" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">@dimen/recommended_genre_corner_size_top_left</item>
+        <item name="cornerSizeTopRight">@dimen/recommended_genre_corner_size_top_right</item>
+        <item name="cornerSizeBottomLeft">@dimen/recommended_genre_corner_size_bottom_left</item>
+        <item name="cornerSizeBottomRight">@dimen/recommended_genre_corner_size_bottom_right</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.DetailCardViewStyle" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">30dp</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeBottomLeft">30dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
+    <style name="RecommendedGenreRatingBar" parent="Widget.AppCompat.RatingBar.Indicator">
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/white</item>
+    </style>
+
+    <style name="GenreRatingBar" parent="Widget.AppCompat.RatingBar.Indicator">
+        <item name="colorControlNormal">@color/black</item>
+        <item name="colorControlActivated">@color/black</item>
+        <item name="android:colorControlHighlight">@color/black</item>
+    </style>
+
+    <style name="ButtonGenreSelectorStyle" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:fontFamily">@font/proxima_nova_bold</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:paddingEnd">25dp</item>
+        <item name="android:paddingStart">25dp</item>
+        <item name="rippleColor">@color/colorAccent</item>
+        <item name="cornerRadius">22dp</item>
+    </style>
+
+    <style name="CustomRecyclerStyle">
+        <item name="android:overScrollMode">never</item>
+        <item name="android:clipToPadding">false</item>
+    </style>
+
+    <style name="GenericTitleStyle" parent="Mimoflix.Light">
+        <item name="android:fontFamily">@font/proxima_nova_bold</item>
+        <item name="android:textSize">21sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="ClickableCardView" parent="Mimoflix.Light">
+        <item name="rippleColor">@color/white</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="ClickableImageView">
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="ClickableView">
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="DetailActivity.ViewPager">
+        <item name="colorPrimary">@color/white</item>
+    </style>
+
+    <style name="DetailActivity.Specs" parent="DetailActivity">
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">15sp</item>
+        <item name="fontFamily">@font/raleway_bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="DetailActivity.Section.Title" parent="DetailActivity">
+        <item name="android:textSize">21sp</item>
+        <item name="fontFamily">@font/proxima_nova_bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="DetailActivity.Section.Subtitle" parent="DetailActivity">
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">7dp</item>
+        <item name="fontFamily">@font/raleway</item>
+        <item name="android:textColor">@color/dark_gray</item>
+    </style>
+
+    <style name="DetailActivity.TrailerButton" parent="Widget.MaterialComponents.Button">
+        <item name="iconSize">@dimen/trailer_button_icon_size</item>
+        <item name="textAllCaps">false</item>
+        <item name="iconGravity">textStart</item>
+        <item name="backgroundTint">@color/colorAccent</item>
+        <item name="fontFamily">@font/proxima_nova_bold</item>
+        <item name="cornerRadius">@dimen/trailer_button_radius</item>
+    </style>
+
+    <style name="CustomTabsTextAppereance" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="fontFamily">@font/raleway_bold</item>
+    </style>
+
+</resources>

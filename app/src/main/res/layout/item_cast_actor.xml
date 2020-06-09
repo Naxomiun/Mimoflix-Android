@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.nramos.mimoflix.model.ActorViewModel" />
+    </data>
+
+    <com.nramos.mimoflix.customviews.ClickImageView
+        style="@style/ClickableImageView"
+        android:scaleType="centerCrop"
+        app:imageView_duration="200"
+        android:onClick="@{() -> viewModel.onClick()}"
+        app:urlSrc="@{viewModel.actor.profileImage}"
+        app:cornerRadius="@{@dimen/cast_round_corner}"
+        android:layout_marginEnd="@dimen/cast_margin_end"
+        android:layout_width="@dimen/cast_image_height_width"
+        android:layout_height="@dimen/cast_image_height_width"/>
+
+</layout>

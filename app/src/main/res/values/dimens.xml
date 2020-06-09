@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_left_margin">16dp</dimen>
+    <dimen name="default_right_margin">16dp</dimen>
+    <dimen name="default_half_left_margin">8dp</dimen>
+    <dimen name="default_half_right_margin">8dp</dimen>
+    <!--Genres Dimens -->
+    <dimen name="simple_genre_corners">10dp</dimen>
+    
+    <dimen name="recommended_genre_corner_size_top_left">7dp</dimen>
+    <dimen name="recommended_genre_corner_size_top_right">35dp</dimen>
+    <dimen name="recommended_genre_corner_size_bottom_left">35dp</dimen>
+    <dimen name="recommended_genre_corner_size_bottom_right">35dp</dimen>
+
+
+    <dimen name="image_preview_rounded_corners">5dp</dimen>
+
+    <!-- Detail Dimens -->
+    <dimen name="detail_margin_between_same_section">15dp</dimen>
+    <dimen name="detail_margin_between_sections">25dp</dimen>
+
+    <!-- Detail Cast Dimens -->
+    <dimen name="cast_round_corner">25dp</dimen>
+    <dimen name="cast_image_height_width">77dp</dimen>
+    <dimen name="cast_margin_end">15dp</dimen>
+
+    <!-- Detail Trailer Button Dimens -->
+    <dimen name="trailer_button_radius">8dp</dimen>
+    <dimen name="trailer_button_icon_size">30dp</dimen>
+
+    <!-- Movie Fragment Dimens -->
+    <dimen name="movie_item_corner_radius">6dp</dimen>
+    <dimen name="viewpager_item_corner_radius">2dp</dimen>
+    <dimen name="viewpager_item_margin">20dp</dimen>
+
+    <dimen name="zero">0dp</dimen>
+</resources>

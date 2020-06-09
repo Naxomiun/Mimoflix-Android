@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="colorBackgroundThemed" format="reference"/>
+
+    <declare-styleable name="ClickImageView">
+        <attr format="float" name="imageView_scale"/>
+        <attr format="integer" name="imageView_duration"/>
+    </declare-styleable>
+
+</resources>
