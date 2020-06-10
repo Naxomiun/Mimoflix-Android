@@ -221,7 +221,7 @@
                     android:textSize="19sp"
                     android:fontFamily="@font/raleway_bold"
                     android:textColor="@color/dark_gray"
-                    android:text="@{viewModel.movie.genres.get(0).name}"
+                    android:text="@{viewModel.movie.genres.size() > 0 ? viewModel.movie.genres.get(0).name : @string/detail_no_genres}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"/>
 

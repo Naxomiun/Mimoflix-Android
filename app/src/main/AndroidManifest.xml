@@ -31,7 +31,7 @@
             android:theme="@style/TrailerActivity"
             android:name=".ui.trailer.TrailerActivity" />
 
-        <activity android:name=".SearchActivity" />
+        <activity android:name=".ui.search.SearchActivity" />
 
     </application>
 

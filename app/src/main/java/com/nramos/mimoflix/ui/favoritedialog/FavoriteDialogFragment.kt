@@ -28,7 +28,7 @@ class FavoriteDialogFragment : DialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return DialogAddedToFavoritesBinding.inflate(inflater, container, false).also {
             it.lifecycleOwner = viewLifecycleOwner
-            it.tvStringMessageDialog.text = getString(R.string.added_to_favorites, movieTitle)
+            it.tvStringMessageDialog.text = getString(R.string.detail_added_to_favorites, movieTitle)
             if (dialog != null && dialog?.window != null) {
                 dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                 dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE)

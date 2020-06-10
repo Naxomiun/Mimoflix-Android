@@ -8,12 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.nramos.mimoflix.R
+import com.nramos.mimoflix.ui.search.SearchActivity
 import com.nramos.mimoflix.databinding.FragmentMoviesBinding
+import com.nramos.mimoflix.extension.goTo
 import com.nramos.mimoflix.extension.observe
-import android.util.Pair as UtilPair
 import com.nramos.mimoflix.ui.moviedetail.MovieDetailActivity
 import com.nramos.mimoflix.ui.tabmovies.viewpager.FragmentMovieStateAdapter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import android.util.Pair as UtilPair
+
 
 class MoviesFragment : Fragment() {
 
@@ -33,8 +36,16 @@ class MoviesFragment : Fragment() {
                     getString(R.string.fragment_movies_upcoming)
                 )
             )
+            it.toolbarFragmentMovies.inflateMenu(R.menu.shared_appbar_menu)
+            it.toolbarFragmentMovies.setOnMenuItemClickListener { item ->
+                when(item.itemId) {
+                    R.id.menu_action_search -> {
+                        requireContext().goTo<SearchActivity>()
+                    }
+                }
+                true
+            }
             it.tablayout.setupWithViewPager(it.viewpagerMovies)
-
         }.root
     }
 
@@ -50,6 +61,10 @@ class MoviesFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun setupToolbar() {
+
     }
 
 }

@@ -15,7 +15,6 @@ class MoviesRepository(
     private val recommendedProvider: RecommendedProvider
 ) : BaseRepository() {
 
-
     suspend fun getAllFavorites(): List<MovieDB>? {
         return favoritesRoomCall {
             roomDao.getAllMovies()
@@ -47,6 +46,18 @@ class MoviesRepository(
     suspend fun getPopularMovies() : List<Movie> {
         return moviesSafeCall {
             apiService.getPopularMovies()
+        }
+    }
+
+    suspend fun getTrendingMovies() : List<Movie> {
+        return moviesSafeCall {
+            apiService.getTredingMovies()
+        }
+    }
+
+    suspend fun searchMovies(query : String) : List<Movie> {
+        return moviesSafeCall {
+            apiService.searchMovies(query)
         }
     }
 
@@ -96,14 +107,6 @@ class MoviesRepository(
         val mergedGenres : Set<Genre>
         val movieGenres = getGenres{ apiService.getMovieGenres() }
         return movieGenres.toList()
-    }
-
-    suspend fun test() : List<PopularPromoMovie> {
-        return recommendedProvider.getPopularPromoMovies
-    }
-
-    suspend fun test2() : List<Serie>? {
-        return recommendedProvider.getRecommendedSeries
     }
 
 

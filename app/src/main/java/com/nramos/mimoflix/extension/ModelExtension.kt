@@ -7,6 +7,8 @@ import com.nramos.mimoflix.binding.RecyclerDataBindingItem
 import com.nramos.mimoflix.model.ActorViewModel
 import com.nramos.mimoflix.model.MovieDetail
 import com.nramos.mimoflix.model.movie.*
+import com.nramos.mimoflix.model.searchedterm.SearchedTerm
+import com.nramos.mimoflix.model.searchedterm.SearchedTermViewModel
 import com.nramos.mimoflix.persistance.MovieDB
 
 fun MovieDetail.mapToFavorite() = MovieDB(
@@ -43,4 +45,10 @@ fun ActorViewModel.toBindingItem() = RecyclerDataBindingItem(
     item = this,
     variableId = BR.viewModel,
     layout = R.layout.item_cast_actor
+)
+
+fun SearchedTermViewModel.toBindingItem() = RecyclerDataBindingItem(
+    item = this,
+    variableId = BR.viewModel,
+    layout = R.layout.item_last_search_term
 )

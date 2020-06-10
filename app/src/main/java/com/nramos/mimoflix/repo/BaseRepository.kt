@@ -62,7 +62,15 @@ open class BaseRepository {
         runCatching {
             function.invoke()
         }.onSuccess {
-            return if(it.isSuccessful) it.body()!!.results else emptyList()
+            return if(it.isSuccessful) {
+                val aux = mutableListOf<Movie>()
+                it.body()?.results?.forEach { movie ->
+                    if(!movie.posterImage.isNullOrBlank())
+                        aux.add(movie)
+                }
+                aux
+            } else
+                emptyList()
         }.onFailure {
             Log.e("ERROR", it.message)
         }

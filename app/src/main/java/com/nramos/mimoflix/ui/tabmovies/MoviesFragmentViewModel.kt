@@ -48,14 +48,6 @@ class MoviesFragmentViewModel(
 
     private fun getPopularMovies() {
         viewModelScope.launch {
-            _popularPromoMovies.value = withContext(Dispatchers.IO) {
-                moviesRepository.test().map {
-                    PopularPromoMovieViewModel(it) { movie, view ->
-
-                    }.toBindingItem()
-                }
-            }
-
             _popularMovies.value = withContext(Dispatchers.IO) {
                 moviesRepository.getPopularMovies().map {
                     PopularMovieViewModel(it) { movie, view ->

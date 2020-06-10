@@ -2,6 +2,9 @@ package com.nramos.mimoflix.binding
 
 import android.graphics.drawable.Drawable
 import android.util.Log
+import android.view.KeyEvent
+import android.view.inputmethod.EditorInfo
+import android.widget.EditText
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -47,5 +50,14 @@ fun setImageFromDrawableBinding(imageView: ImageView, res : Drawable, dimen : Fl
     imageView.load(res) {
         crossfade(true)
         transformations(RoundedCornersTransformation(dimen))
+    }
+}
+
+@BindingAdapter("onEditorEnterAction")
+fun EditText.onEditorEnterAction(function: Function1<String, Unit>?) {
+    if (function == null) setOnEditorActionListener(null)
+    else setOnEditorActionListener {editText, _, _ ->
+        function(editText.editableText.toString())
+        false
     }
 }

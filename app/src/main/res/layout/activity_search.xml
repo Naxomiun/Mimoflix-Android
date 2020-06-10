@@ -1,29 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/root_view"
-    android:orientation="vertical"
-    android:background="?attr/colorBackgroundThemed"
-    android:fitsSystemWindows="true"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.nramos.mimoflix.ui.search.SearchActivityViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/root_view"
+        android:orientation="vertical"
         android:background="?attr/colorBackgroundThemed"
-        android:layout_alignParentTop="true"
-        android:orientation="horizontal"
-        android:elevation="10dp"
+        android:clipToPadding="false"
+        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
+        android:layout_height="match_parent">
 
         <ImageView
-            android:transitionName="PRUEBA"
+            android:onClick="@{() -> viewModel.onBackEvent()}"
+            android:layout_marginStart="@dimen/default_left_margin"
+            android:id="@+id/iv_search_back_button"
+            app:layout_constraintEnd_toStartOf="@id/ll_search_input"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintTop_toTopOf="@id/ll_search_input"
+            app:layout_constraintBottom_toBottomOf="@id/ll_search_input"
+            app:layout_constraintStart_toStartOf="parent"
             android:src="@drawable/ic_back"
-            android:layout_width="30dp"
-            android:layout_height="match_parent"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_marginEnd="@dimen/default_right_margin"
+            android:layout_marginTop="@dimen/detail_margin_between_sections"
+            android:id="@+id/ll_search_input"
+            android:padding="12dp"
+            android:layout_marginStart="@dimen/default_half_left_margin"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:background="@drawable/rounded_search_input"
+            android:elevation="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_search_back_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
 
+            <ImageView
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-</RelativeLayout>
+            <!--suppress AndroidUnknownAttribute -->
+            <EditText
+                android:text="@{viewModel.currentSearchQuery}"
+                app:onEditorEnterAction="@{viewModel.saveSearchedTerm}"
+                android:onTextChanged="@{viewModel.onSearchEvent}"
+                android:autofillHints="dfsdfdsf"
+                android:gravity="bottom"
+                android:imeOptions="actionDone|actionSend|actionGo"
+                android:textSize="14sp"
+                android:inputType="text"
+                android:hint="@string/search_find_movies"
+                android:fontFamily="@font/raleway"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:overScrollMode="never"
+            android:layout_marginTop="20dp"
+            android:clipToPadding="false"
+            app:layout_constraintTop_toBottomOf="@id/ll_search_input"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:visibility="@{viewModel.lastSearchTerms.size > 0 ? View.VISIBLE : View.GONE}"
+                    android:layout_marginStart="@dimen/default_left_margin"
+                    android:layout_marginEnd="@dimen/default_right_margin"
+                    android:id="@+id/tv_search_last_searched_title"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:textColor="@color/gray"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="@string/search_last_searched"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_searched_terms"
+                    app:items="@{viewModel.lastSearchTerms}"
+                    style="@style/CustomRecyclerStyle"
+                    android:paddingEnd="@dimen/default_right_margin"
+                    android:paddingStart="@dimen/default_left_margin"
+                    android:layout_marginTop="@dimen/default_half_right_margin"
+                    app:layout_constraintTop_toBottomOf="@id/tv_search_last_searched_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:orientation="horizontal" />
+
+                <TextView
+                    android:layout_marginStart="@dimen/default_left_margin"
+                    android:layout_marginEnd="@dimen/default_right_margin"
+                    android:id="@+id/tv_search_most_searched_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:textColor="@color/black"
+                    android:textSize="21sp"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="@{viewModel.currentSearchQuery.length() == 0 ? @string/search_most_searched : @string/search_results_for(viewModel.currentSearchQuery)}"
+                    android:layout_marginTop="@dimen/detail_margin_between_same_section"
+                    app:layout_constraintTop_toBottomOf="@id/rv_searched_terms"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    style="@style/CustomRecyclerStyle"
+                    android:layoutAnimation="@anim/list_animation"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="3"
+                    android:paddingEnd="@dimen/default_half_left_margin"
+                    android:paddingStart="@dimen/default_half_right_margin"
+                    app:items="@{viewModel.searchedMovies}"
+                    android:nestedScrollingEnabled="false"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="@dimen/default_half_right_margin"
+                    app:layout_constraintTop_toBottomOf="@id/tv_search_most_searched_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

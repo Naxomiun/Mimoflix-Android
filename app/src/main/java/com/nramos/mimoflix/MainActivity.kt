@@ -22,15 +22,5 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.appbar_search -> {
-
-                goTo<MovieDetailActivity>()
-                //goTo<DetailActivity>()
-            }
-        }
-        return true
-    }
 
 }

@@ -16,12 +16,19 @@
     <string name="string_series">Series</string>
 
 
+    <!-- Search -->
+    <string name="search_find_movies">Buscar películas...</string>
+    <string name="search_last_searched">Buscado recientemente</string>
+    <string name="search_most_searched">Más buscado</string>
+    <string name="search_results_for">Resultados para: %1$s</string>
+
     <!-- Movie detail -->
     <string name="detail_synosis_title">Sinópsis</string>
     <string name="detail_cast_title">Reparto</string>
     <string name="detail_play_trailer">Reproducir trailer</string>
     <string name="detail_play_trailer_not_available">Trailer no disponible</string>
     <string name="detail_related_movies">Películas relacionadas</string>
-    <string name="added_to_favorites">Se ha añadido \'%1$s\' a tus favoritos</string>
+    <string name="detail_no_genres"> - </string>
+    <string name="detail_added_to_favorites">Se ha añadido \'%1$s\' a tus favoritos</string>
 
 </resources>

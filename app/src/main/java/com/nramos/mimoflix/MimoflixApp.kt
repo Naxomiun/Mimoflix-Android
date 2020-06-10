@@ -2,6 +2,7 @@ package com.nramos.mimoflix
 
 import android.app.Application
 import com.nramos.mimoflix.di.networkModule
+import com.nramos.mimoflix.di.otherModule
 import com.nramos.mimoflix.di.roomModule
 import com.nramos.mimoflix.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
@@ -15,7 +16,7 @@ class MimoflixApp : Application() {
         startKoin {
             androidLogger()
             androidContext(this@MimoflixApp)
-            modules(viewModelModule, networkModule, roomModule)
+            modules(viewModelModule, networkModule, roomModule, otherModule)
         }
     }
 

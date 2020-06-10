@@ -29,8 +29,7 @@ class FragmentGenresViewModel(
 
     fun getRecommendedMedia() {
         viewModelScope.launch {
-            //_movies.value = withContext(Dispatchers.IO) { moviesRepository.test() }
-            _series.value = withContext(Dispatchers.IO) { moviesRepository.test2() }
+
         }
     }
 
