@@ -2,7 +2,6 @@ package com.nramos.mimoflix.extension
 
 import java.util.*
 
-
 fun <T> List<T>.safeSubList(fromIndex: Int, toIndex: Int): List<T>? {
     var fromIndex = fromIndex
     var toIndex = toIndex

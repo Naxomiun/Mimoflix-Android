@@ -17,7 +17,6 @@ import com.nramos.mimoflix.ui.tabmovies.viewpager.FragmentMovieStateAdapter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import android.util.Pair as UtilPair
 
-
 class MoviesFragment : Fragment() {
 
     private val viewModel : MoviesFragmentViewModel by sharedViewModel()
@@ -27,8 +26,7 @@ class MoviesFragment : Fragment() {
             it.viewModel = viewModel
             it.lifecycleOwner = viewLifecycleOwner
             it.viewpagerMovies.offscreenPageLimit = 4
-            it.viewpagerMovies.adapter = FragmentMovieStateAdapter(
-                requireActivity().supportFragmentManager,
+            it.viewpagerMovies.adapter = FragmentMovieStateAdapter(requireActivity().supportFragmentManager,
                 listOf(
                     getString(R.string.fragment_movies_now_playing),
                     getString(R.string.fragment_movies_popular),

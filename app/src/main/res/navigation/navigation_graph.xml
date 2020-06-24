@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/movies">
+    app:startDestination="@id/home">
 
     <fragment
         android:id="@+id/home"
-        android:name="com.nramos.mimoflix.ui.genres.FragmentGenres"
+        android:name="com.nramos.mimoflix.ui.tabhome.HomeFragment"
         android:label="Home"
-        tools:layout="@layout/fragment_genres"/>
+        tools:layout="@layout/fragment_home"/>
 
     <fragment
         android:id="@+id/movies"

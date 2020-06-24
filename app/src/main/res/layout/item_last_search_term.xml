@@ -9,17 +9,11 @@
     </data>
 
     <com.google.android.material.chip.Chip
-        app:chipCornerRadius="5dp"
+        style="@style/SearchActivity.ChipStyle"
         android:layout_marginStart="1dp"
-        android:textAlignment="center"
         android:onClick="@{() -> viewModel.onClick()}"
-        android:textAppearance="@style/SearchedTermChipTextStyle"
-        style="@style/Widget.MaterialComponents.Chip.Action"
         android:layout_marginEnd="@dimen/default_half_right_margin"
         android:text="@{viewModel.searchedTerm.term}"
-        android:fontFamily="@font/raleway_bold"
-        app:chipBackgroundColor="@color/light_gray"
-        android:elevation="2dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 

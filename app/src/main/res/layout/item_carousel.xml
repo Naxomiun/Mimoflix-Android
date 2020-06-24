@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.nramos.mimoflix.model.movie.PopularPromoMovieViewModel" />
+    </data>
+
+    <com.nramos.mimoflix.customviews.CarouselMovieItem
+        android:id="@+id/custom_carousel_item"
+        android:layout_marginEnd="@dimen/default_right_margin"
+        android:layout_marginStart="@dimen/default_left_margin"
+        app:carouselItem="@{viewModel.movie}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</layout>

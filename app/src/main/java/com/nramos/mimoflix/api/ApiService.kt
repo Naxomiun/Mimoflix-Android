@@ -23,15 +23,6 @@ interface ApiService {
     @GET("discover/movie?api_key=7ea20134f2a81fb24515d4af532cfe46&sort_by=popularity.desc&include_adult=false&include_video=false&page=1")
     suspend fun getMoviesPerGenre(@Query("with_genres") id: Int) : Response<MovieApiResponse>
 
-    @GET("discover/tv?api_key=7ea20134f2a81fb24515d4af532cfe46&sort_by=popularity.desc&language=es-ES&page=1")
-    suspend fun getSeriesPerGenre(@Query("with_genres") id: Int) : Response<SerieApiResponse>
-
-    @GET("genre/movie/list?api_key=7ea20134f2a81fb24515d4af532cfe46&language=es-ES")
-    suspend fun getMovieGenres() : Response<GenreApiResponse>
-
-    @GET("genre/tv/list?api_key=7ea20134f2a81fb24515d4af532cfe46&language=es-ES")
-    suspend fun getTvGenres() : Response<GenreApiResponse>
-
     @GET("movie/{id}?api_key=7ea20134f2a81fb24515d4af532cfe46&language=es-ES&append_to_response=credits")
     suspend fun getMovieDetail(@Path(value = "id") id: Int) : Response<MovieDetail>
 
@@ -46,5 +37,11 @@ interface ApiService {
 
     @GET("tv/top_rated?api_key=7ea20134f2a81fb24515d4af532cfe46&language=es-ES&page=1")
     suspend fun getRecommendedSeries() : Response<SerieApiResponse>
+
+    @GET("person/{id}?api_key=7ea20134f2a81fb24515d4af532cfe46&language=es-ES")
+    suspend fun getActorDetail(@Path(value = "id") id: Int) : Response<ActorDetail>
+
+    @GET("person/{id}/movie_credits?api_key=7ea20134f2a81fb24515d4af532cfe46&language=es-ES")
+    suspend fun getActorMovies(@Path(value = "id") id: Int) : Response<ActorMovies>
 
 }

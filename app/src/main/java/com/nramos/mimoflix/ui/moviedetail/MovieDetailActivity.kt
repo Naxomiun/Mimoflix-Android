@@ -1,8 +1,8 @@
 package com.nramos.mimoflix.ui.moviedetail
 
-
+import android.app.ActivityOptions
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.NestedScrollView
@@ -10,6 +10,7 @@ import com.nramos.mimoflix.databinding.ActivityDetailBinding
 import com.nramos.mimoflix.extension.goTo
 import com.nramos.mimoflix.extension.observe
 import com.nramos.mimoflix.extension.setTranslucentActivity
+import com.nramos.mimoflix.ui.actordetail.ActorDetailActivity
 import com.nramos.mimoflix.ui.favoritedialog.FavoriteDialogFragment
 import com.nramos.mimoflix.ui.trailer.TrailerActivity
 import org.koin.androidx.scope.lifecycleScope
@@ -34,8 +35,14 @@ class MovieDetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         with(viewModel){
+
             observe(actorDetailAction) {
-                Log.e("DETAIL ACTIVITY", it.toString())
+                it.getContentIfNotHandled()?.let { pair ->
+                    val intent = Intent(this@MovieDetailActivity,  ActorDetailActivity::class.java)
+                    intent.putExtra("actorId", pair.first)
+                    val options = ActivityOptions.makeSceneTransitionAnimation(this@MovieDetailActivity, android.util.Pair(pair.second, pair.second.transitionName))
+                    startActivity(intent, options.toBundle())
+                }
             }
 
             observe(trailerAction) {
@@ -68,10 +75,14 @@ class MovieDetailActivity : AppCompatActivity() {
             }
         }
 
-        setScrollListener()
-
         viewModel.getMovieDetail()
         viewModel.getRelatedMovies()
+
+        setScrollListener()
+    }
+
+    override fun onBackPressed() {
+        supportFinishAfterTransition()
     }
 
     private fun setScrollListener() {

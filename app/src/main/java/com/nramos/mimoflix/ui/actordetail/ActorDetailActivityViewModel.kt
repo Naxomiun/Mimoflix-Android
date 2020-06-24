@@ -1,0 +1,56 @@
+package com.nramos.mimoflix.ui.actordetail
+
+import android.view.View
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.nramos.mimoflix.binding.RecyclerDataBindingItem
+import com.nramos.mimoflix.extension.toBindingItem
+import com.nramos.mimoflix.model.ActorDetail
+import com.nramos.mimoflix.model.ActorMovie
+import com.nramos.mimoflix.model.ActorMovieViewModel
+import com.nramos.mimoflix.model.movie.Movie
+import com.nramos.mimoflix.model.movie.RoundedPosterViewModel
+import com.nramos.mimoflix.repo.actors.ActorRepository
+import com.nramos.mimoflix.utils.SingleEvent
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+
+class ActorDetailActivityViewModel(
+    private val actorRepository: ActorRepository
+) : ViewModel() {
+
+    var actorId : Int = 0
+
+    private val _actor = MutableLiveData<ActorDetail?>()
+    val actor : LiveData<ActorDetail?> get() = _actor
+
+    private val _actorMovies = MutableLiveData<List<RecyclerDataBindingItem>>()
+    val actorMovies : LiveData<List<RecyclerDataBindingItem>> get() = _actorMovies
+
+    private val _movieActionEvent = MutableLiveData<SingleEvent<Int?>>()
+    val movieActionEvent : LiveData<SingleEvent<Int?>> get() = _movieActionEvent
+
+    fun getActorDetail() {
+        viewModelScope.launch {
+            _actor.value = withContext(Dispatchers.IO) {
+                actorRepository.getActorDetail(actorId)
+            }
+        }
+    }
+
+    fun getActorMovies() {
+        viewModelScope.launch {
+            _actorMovies.value = withContext(Dispatchers.IO) {
+                actorRepository.getActorMovies(actorId)?.map {
+                    ActorMovieViewModel(it) { movie ->
+                        _movieActionEvent.value = SingleEvent(movie.id)
+                    }.toBindingItem()
+                }
+            }
+        }
+    }
+
+}

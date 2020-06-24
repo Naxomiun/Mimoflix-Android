@@ -9,7 +9,6 @@ import android.os.Build
 import android.view.View
 import android.view.WindowManager
 import androidx.core.os.bundleOf
-import com.nramos.mimoflix.R
 import android.util.Pair as UtilPair
 
 inline fun <reified T : Activity> Context.goTo(vararg pairs : Pair<String, Any>) {

@@ -10,9 +10,10 @@
 
     <com.nramos.mimoflix.customviews.ClickImageView
         style="@style/ClickableImageView"
+        android:transitionName="prueba2"
         android:scaleType="centerCrop"
         app:imageView_duration="200"
-        android:onClick="@{() -> viewModel.onClick()}"
+        android:onClick="@{(view) -> viewModel.onClick(view)}"
         app:urlSrc="@{viewModel.actor.profileImage}"
         app:cornerRadius="@{@dimen/cast_round_corner}"
         android:layout_marginEnd="@dimen/cast_margin_end"

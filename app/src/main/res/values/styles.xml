@@ -19,11 +19,6 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     </style>
 
-    <style name="DetailActivity" parent="Mimoflix.Light">
-        <item name="android:windowSharedElementEnterTransition">@transition/arc_transition</item>
-        <item name="android:windowSharedElementExitTransition">@transition/arc_transition</item>
-    </style>
-
     <style name="TrailerActivity" parent="Mimoflix.Light">
         <item name="android:windowTranslucentNavigation">true</item>
         <item name="android:windowTranslucentStatus">true</item>
@@ -33,14 +28,14 @@
 
     <style name="TitleCollapsedStyle" parent="@android:style/TextAppearance.Medium">
         <item name="android:textSize">25sp</item>
-        <item name="fontFamily">@font/roboto_condensed_bold</item>
+        <item name="fontFamily">@font/gotham_black</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="TitleExpandedStyle" parent="@android:style/TextAppearance.Medium">
         <item name="android:textSize">40sp</item>
         <item name="android:textColor">@color/colorAccent</item>
-        <item name="fontFamily">@font/roboto_condensed_bold</item>
+        <item name="fontFamily">@font/gotham_black</item>
     </style>
 
     <style name="ShapeAppearanceOverlay.MovieCardViewStyle" parent="">
@@ -70,26 +65,13 @@
         <item name="android:colorControlHighlight">@color/black</item>
     </style>
 
-    <style name="ButtonGenreSelectorStyle" parent="Widget.MaterialComponents.Button.TextButton">
-        <item name="android:textAllCaps">false</item>
-        <item name="android:letterSpacing">0</item>
-        <item name="android:fontFamily">@font/proxima_nova_bold</item>
-        <item name="android:paddingTop">16dp</item>
-        <item name="android:textSize">17sp</item>
-        <item name="android:paddingBottom">16dp</item>
-        <item name="android:paddingEnd">25dp</item>
-        <item name="android:paddingStart">25dp</item>
-        <item name="rippleColor">@color/colorAccent</item>
-        <item name="cornerRadius">22dp</item>
-    </style>
-
     <style name="CustomRecyclerStyle">
         <item name="android:overScrollMode">never</item>
         <item name="android:clipToPadding">false</item>
     </style>
 
     <style name="GenericTitleStyle" parent="Mimoflix.Light">
-        <item name="android:fontFamily">@font/proxima_nova_bold</item>
+        <item name="android:fontFamily">@font/gotham_bold</item>
         <item name="android:textSize">21sp</item>
         <item name="android:textColor">@color/black</item>
     </style>
@@ -109,27 +91,31 @@
         <item name="android:clickable">true</item>
     </style>
 
-    <style name="DetailActivity.ViewPager">
-        <item name="colorPrimary">@color/white</item>
+
+    <!-- Detail Activity -->
+
+    <style name="DetailActivity" parent="Mimoflix.Light">
+        <item name="android:windowSharedElementEnterTransition">@transition/arc_transition</item>
+        <item name="android:windowSharedElementExitTransition">@transition/arc_transition</item>
     </style>
 
     <style name="DetailActivity.Specs" parent="DetailActivity">
         <item name="android:textAlignment">center</item>
         <item name="android:textSize">15sp</item>
-        <item name="fontFamily">@font/raleway_bold</item>
+        <item name="fontFamily">@font/gotham_bold</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="DetailActivity.Section.Title" parent="DetailActivity">
         <item name="android:textSize">21sp</item>
-        <item name="fontFamily">@font/proxima_nova_bold</item>
+        <item name="fontFamily">@font/gotham_bold</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="DetailActivity.Section.Subtitle" parent="DetailActivity">
         <item name="android:textSize">16sp</item>
         <item name="android:lineSpacingExtra">7dp</item>
-        <item name="fontFamily">@font/raleway</item>
+        <item name="fontFamily">@font/gotham_regular</item>
         <item name="android:textColor">@color/dark_gray</item>
     </style>
 
@@ -138,7 +124,7 @@
         <item name="textAllCaps">false</item>
         <item name="iconGravity">textStart</item>
         <item name="backgroundTint">@color/colorAccent</item>
-        <item name="fontFamily">@font/proxima_nova_bold</item>
+        <item name="fontFamily">@font/gotham_medium</item>
         <item name="cornerRadius">@dimen/trailer_button_radius</item>
     </style>
 
@@ -146,12 +132,72 @@
         <item name="textAllCaps">false</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textAllCaps">false</item>
-        <item name="fontFamily">@font/raleway_bold</item>
+        <item name="fontFamily">@font/gotham_medium</item>
     </style>
 
-    <style name="SearchedTermChipTextStyle" parent="TextAppearance.MaterialComponents.Body2">
-        <item name="fontFamily">@font/raleway_bold</item>
+    <!-- Search Activity -->
+
+    <style name="SearchActivity" parent="Mimoflix.Light">
+        <item name="android:windowSharedElementEnterTransition">@transition/arc_transition</item>
+        <item name="android:windowSharedElementExitTransition">@transition/arc_transition</item>
+    </style>
+
+    <style name="SearchActivity.ChipStyle" parent="Widget.MaterialComponents.Chip.Action">
+        <item name="android:textAppearance">@style/SearchActivity.ChipTextAppearance</item>
+        <item name="chipCornerRadius">5dp</item>
+        <item name="chipBackgroundColor">@color/light_gray</item>
+        <item name="android:elevation">2dp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="SearchActivity.ChipTextAppearance" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:fontFamily">@font/gotham_bold</item>
+        <item name="fontFamily">@font/gotham_bold</item>
         <item name="android:textSize">14sp</item>
     </style>
+
+    <style name="SearchActivity.Input" parent="SearchActivity">
+        <item name="android:imeOptions">actionDone|actionSend|actionGo</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:inputType">text</item>
+        <item name="android:hint">@string/search_find_movies</item>
+        <item name="android:fontFamily">@font/gotham_medium</item>
+        <item name="fontFamily">@font/gotham_medium</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="SearchActivity.Title" parent="SearchActivity">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/gotham_bold</item>
+        <item name="fontFamily">@font/gotham_bold</item>
+        <item name="android:textSize">21sp</item>
+    </style>
+
+    <style name="SearchActivity.SubTitle" parent="SearchActivity">
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/gotham_bold</item>
+        <item name="fontFamily">@font/gotham_bold</item>
+    </style>
+
+    <!-- Actor Detail Activity -->
+
+    <style name="ActorDetailActivity" parent="Mimoflix.Light">
+        <item name="android:windowSharedElementEnterTransition">@transition/arc_transition</item>
+        <item name="android:windowSharedElementExitTransition">@transition/arc_transition</item>
+    </style>
+
+
+    <!-- Dialog favorite -->
+
+    <style name="DialogFavoriteTitle">
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">24sp</item>
+        <item name="fontFamily">@font/gotham_bold</item>
+        <item name="android:fontFamily">@font/gotham_bold</item>
+    </style>
+
 
 </resources>

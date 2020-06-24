@@ -1,25 +1,12 @@
 package com.nramos.mimoflix.extension
 
-import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
-import android.os.Build
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
-import androidx.annotation.RequiresApi
-import androidx.core.content.ContextCompat
 import coil.api.load
 import coil.transform.RoundedCornersTransformation
-import com.google.android.material.button.MaterialButton
 import com.nramos.mimoflix.R
 import com.nramos.mimoflix.utils.Constants.Companion.API_IMAGE_BASE_URL
-
-fun MaterialButton.setCategorySelected(selected : Boolean = false) {
-    val bgColor = if (selected) ContextCompat.getColor(this.context, R.color.colorAccent) else ContextCompat.getColor(this.context, R.color.lightBackgroundColor)
-    val textColor = if (selected) ContextCompat.getColor(this.context, R.color.white) else ContextCompat.getColor(this.context, R.color.black)
-    this.setBackgroundColor(bgColor)
-    this.elevation = if(selected) 70f else 0f
-    this.setTextColor(textColor)
-}
 
 fun ImageView.loadAsyncImage(url : Any?, cornerRadius : Int = R.dimen.zero)  {
     var image = url
@@ -27,14 +14,15 @@ fun ImageView.loadAsyncImage(url : Any?, cornerRadius : Int = R.dimen.zero)  {
         image = String.format("${API_IMAGE_BASE_URL}%s", url)
         this.load(image) {
             crossfade(true)
-            transformations(RoundedCornersTransformation(this@loadAsyncImage.resources.getDimension(cornerRadius)))
+            transformations(RoundedCornersTransformation(resources.getDimension(cornerRadius)))
         }
     }
-    else if(image is Int) {
-        this.load(image) {
-            crossfade(true)
-            transformations(RoundedCornersTransformation(this@loadAsyncImage.resources.getDimension(cornerRadius)))
-        }
+}
+
+fun ImageView.loadAsyncImageResource(res : Int, cornerRadius : Int = R.dimen.zero)  {
+    this.load(res) {
+        crossfade(true)
+        transformations(RoundedCornersTransformation(resources.getDimension(cornerRadius)))
     }
 }
 

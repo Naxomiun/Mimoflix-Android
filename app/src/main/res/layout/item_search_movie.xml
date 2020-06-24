@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.nramos.mimoflix.model.movie.SearchMovieViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="3dp"
+        android:onClick="@{(view) -> viewModel.onClick(ivSearchMoviePoster)}"
+        android:layout_marginEnd="@dimen/default_half_left_margin"
+        android:layout_marginStart="@dimen/default_half_right_margin"
+        android:layout_marginBottom="@dimen/detail_margin_between_same_section"
+        android:background="@drawable/background_search_movie_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.nramos.mimoflix.customviews.ClickImageView
+            android:onClick="@{(view) -> viewModel.onClick(view)}"
+            android:id="@+id/iv_search_movie_poster"
+            android:padding="@dimen/default_half_left_margin"
+            android:layout_gravity="center"
+            app:imageView_duration="200"
+            android:transitionName="prueba"
+            android:scaleType="centerCrop"
+            app:urlSrc="@{viewModel.movie.posterImage}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="W,1:1.5"
+            app:cornerRadius="@{@dimen/movie_item_corner_radius}"
+            android:layout_width="75dp"
+            android:layout_height="105dp"/>
+
+        <LinearLayout
+            android:layout_marginStart="@dimen/default_half_left_margin"
+            app:layout_constraintBottom_toBottomOf="@id/iv_search_movie_poster"
+            app:layout_constraintStart_toEndOf="@id/iv_search_movie_poster"
+            app:layout_constraintTop_toTopOf="@id/iv_search_movie_poster"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/default_half_right_margin"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="17sp"
+                android:fontFamily="@font/gotham_bold"
+                android:textColor="@color/black"
+                android:text="@{viewModel.movie.title}"
+                android:id="@+id/tv_search_movie_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:textSize="16sp"
+                android:textColor="@color/dark_gray"
+                android:fontFamily="@font/gotham_medium"
+                android:text="@{viewModel.movie.releaseDate}"
+                android:id="@+id/tv_search_movie_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_marginTop="@dimen/default_half_right_margin"
+                android:textSize="15sp"
+                android:textColor="@color/gray"
+                android:fontFamily="@font/gotham_regular"
+                android:text="@{viewModel.movie.overview}"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:id="@+id/tv_search_movie_overview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

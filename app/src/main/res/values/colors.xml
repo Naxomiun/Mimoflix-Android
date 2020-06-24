@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimary">#FFC200</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#FFC200</color>
 
@@ -14,5 +14,16 @@
     <color name="black">#000</color>
 
     <color name="dark_gray">#BCBCBC</color>
+
+    <color name="genre_comedy">#938D30</color>
+    <color name="genre_action">#801919</color>
+    <color name="genre_crime">#597E3F</color>
+    <color name="genre_sfiction">#C85629</color>
+    <color name="genre_animated">#36957F</color>
+    <color name="genre_fantasy">#6F12F1</color>
+    <color name="genre_horror">#1B1A19</color>
+    <color name="genre_western">#553014</color>
+    <color name="genre_war">#ACACAC</color>
+    <color name="genre_drama">#07658A</color>
 
 </resources>

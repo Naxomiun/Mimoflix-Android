@@ -3,8 +3,9 @@ package com.nramos.mimoflix.di
 import com.nramos.mimoflix.api.ApiService
 import okhttp3.OkHttpClient
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.nramos.mimoflix.api.RecommendedProvider
-import com.nramos.mimoflix.repo.MoviesRepository
+import com.nramos.mimoflix.api.LocalProvider
+import com.nramos.mimoflix.repo.actors.ActorRepository
+import com.nramos.mimoflix.repo.movies.MovieRepository
 import com.nramos.mimoflix.utils.Constants.Companion.API_BASE_URL
 import com.nramos.mimoflix.utils.Constants.Companion.CONNECT_TIMEOUT
 import okhttp3.logging.HttpLoggingInterceptor
@@ -16,7 +17,7 @@ import java.util.concurrent.TimeUnit
 val networkModule = module {
 
     single {
-        RecommendedProvider()
+        LocalProvider()
     }
 
     single {
@@ -39,7 +40,11 @@ val networkModule = module {
     }
 
     single {
-        MoviesRepository(get(), get(), get())
+        MovieRepository(get(), get(), get())
+    }
+
+    single {
+        ActorRepository(get())
     }
 
     factory {

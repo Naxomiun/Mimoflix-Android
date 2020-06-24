@@ -29,11 +29,8 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
+                style="@style/DialogFavoriteTitle"
                 android:id="@+id/tv_string_message_dialog"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="28sp"
-                android:fontFamily="@font/raleway_bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 

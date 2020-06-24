@@ -4,10 +4,11 @@ package com.nramos.mimoflix.extension
 import com.nramos.mimoflix.BR
 import com.nramos.mimoflix.R
 import com.nramos.mimoflix.binding.RecyclerDataBindingItem
+import com.nramos.mimoflix.model.ActorMovieViewModel
 import com.nramos.mimoflix.model.ActorViewModel
 import com.nramos.mimoflix.model.MovieDetail
+import com.nramos.mimoflix.model.localgenre.LocalGenreViewModel
 import com.nramos.mimoflix.model.movie.*
-import com.nramos.mimoflix.model.searchedterm.SearchedTerm
 import com.nramos.mimoflix.model.searchedterm.SearchedTermViewModel
 import com.nramos.mimoflix.persistance.MovieDB
 
@@ -17,28 +18,28 @@ fun MovieDetail.mapToFavorite() = MovieDB(
     image = this.posterImage
 )
 
-fun PopularPromoMovieViewModel.toBindingItem() = RecyclerDataBindingItem(
+fun RoundedPosterViewModel.toBindingItem() = RecyclerDataBindingItem(
     item = this,
     variableId = BR.viewModel,
-    layout = R.layout.item_popular_promo_movie
+    layout = R.layout.item_rounded_movie_poster
 )
 
-fun PopularMovieViewModel.toBindingItem() = RecyclerDataBindingItem(
+fun ActorMovieViewModel.toBindingItem() = RecyclerDataBindingItem(
     item = this,
     variableId = BR.viewModel,
-    layout = R.layout.item_popular_movie
-)
-
-fun RecommendedMovieViewModel.toBindingItem() = RecyclerDataBindingItem(
-    item = this,
-    variableId = BR.viewModel,
-    layout = R.layout.item_recommended_movie
+    layout = R.layout.item_rounded_movie_poster_horizontal
 )
 
 fun RelatedMovieViewModel.toBindingItem() = RecyclerDataBindingItem(
     item = this,
     variableId = BR.viewModel,
-    layout = R.layout.item_related
+    layout = R.layout.item_related_movie
+)
+
+fun SearchMovieViewModel.toBindingItem() = RecyclerDataBindingItem(
+    item = this,
+    variableId = BR.viewModel,
+    layout = R.layout.item_search_movie
 )
 
 fun ActorViewModel.toBindingItem() = RecyclerDataBindingItem(
@@ -51,4 +52,16 @@ fun SearchedTermViewModel.toBindingItem() = RecyclerDataBindingItem(
     item = this,
     variableId = BR.viewModel,
     layout = R.layout.item_last_search_term
+)
+
+fun LocalGenreViewModel.toBindingItem() = RecyclerDataBindingItem(
+    item = this,
+    variableId = BR.viewModel,
+    layout = R.layout.item_genre
+)
+
+fun PopularPromoMovieViewModel.toBindingItem() = RecyclerDataBindingItem(
+    item = this,
+    variableId = BR.viewModel,
+    layout = R.layout.item_carousel
 )

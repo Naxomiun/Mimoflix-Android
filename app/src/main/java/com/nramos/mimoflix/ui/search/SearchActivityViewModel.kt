@@ -8,11 +8,12 @@ import androidx.lifecycle.viewModelScope
 import com.nramos.mimoflix.binding.RecyclerDataBindingItem
 import com.nramos.mimoflix.extension.toBindingItem
 import com.nramos.mimoflix.model.movie.Movie
-import com.nramos.mimoflix.model.movie.PopularMovieViewModel
+import com.nramos.mimoflix.model.movie.RoundedPosterViewModel
+import com.nramos.mimoflix.model.movie.SearchMovieViewModel
 import com.nramos.mimoflix.model.searchedterm.SearchedTerm
 import com.nramos.mimoflix.model.searchedterm.SearchedTermViewModel
 import com.nramos.mimoflix.persistance.SearchHelper
-import com.nramos.mimoflix.repo.MoviesRepository
+import com.nramos.mimoflix.repo.movies.MovieRepository
 import com.nramos.mimoflix.utils.SingleEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -20,7 +21,7 @@ import kotlinx.coroutines.withContext
 
 class SearchActivityViewModel (
     private val searchHelper: SearchHelper,
-    private val moviesRepository: MoviesRepository
+    private val movieRepository: MovieRepository
 ) : ViewModel() {
 
     val saveSearchedTerm: Function1<String, Unit> = this::saveSearchedTerm
@@ -33,6 +34,9 @@ class SearchActivityViewModel (
 
     private val _searchedMovies = MutableLiveData<List<RecyclerDataBindingItem>>()
     val searchedMovies: LiveData<List<RecyclerDataBindingItem>> get() = _searchedMovies
+
+    private val _isSearching =  MutableLiveData<Boolean>()
+    val isSearching: LiveData<Boolean> get() = _isSearching
 
     private val _movieActionEvent = MutableLiveData<SingleEvent<Pair<Movie, View>>>()
     val movieActionEvent : LiveData<SingleEvent<Pair<Movie, View>>> get() = _movieActionEvent
@@ -47,9 +51,10 @@ class SearchActivityViewModel (
 
     private fun getMostSearchedMovies() {
         viewModelScope.launch {
+            _isSearching.value = false
             _searchedMovies.value = withContext(Dispatchers.IO) {
-                moviesRepository.getTrendingMovies().map {
-                    PopularMovieViewModel(it) { movie, view ->
+                movieRepository.getTrendingMovies().map {
+                    RoundedPosterViewModel(it) { movie, view ->
                         _movieActionEvent.value = SingleEvent(Pair(movie, view))
                     }.toBindingItem()
                 }
@@ -72,9 +77,10 @@ class SearchActivityViewModel (
 
     private fun searchMovies(query : String) {
         viewModelScope.launch {
+            _isSearching.value = true
             _searchedMovies.value = withContext(Dispatchers.IO) {
-                moviesRepository.searchMovies(query).map {
-                    PopularMovieViewModel(it) { movie, view ->
+                movieRepository.searchMovies(query).map {
+                    SearchMovieViewModel(it) { movie, view ->
                         _movieActionEvent.value = SingleEvent(Pair(movie, view))
                     }.toBindingItem()
                 }

@@ -1,4 +1,6 @@
 <resources>
+    <string name="app_name_first">Mimo</string>
+    <string name="app_name_second">flix</string>
     <string name="app_name">Mimoflix</string>
 
     <!-- Fragment Genres -->
@@ -13,9 +15,7 @@
     <!-- Miscelaneous -->
     <string name="poster_content_description">Imagen promocional del contenido</string>
     <string name="string_peliculas">Películas</string>
-    <string name="string_series">Series</string>
-
-
+    
     <!-- Search -->
     <string name="search_find_movies">Buscar películas...</string>
     <string name="search_last_searched">Buscado recientemente</string>
@@ -31,4 +31,18 @@
     <string name="detail_no_genres"> - </string>
     <string name="detail_added_to_favorites">Se ha añadido \'%1$s\' a tus favoritos</string>
 
+    <!-- Genres names -->
+    <string name="action">Acción</string>
+    <string name="comedy">Comedia</string>
+    <string name="animation">Animación</string>
+    <string name="crime">Crimen</string>
+    <string name="drama">Drama</string>
+    <string name="fantasy">Fantasía</string>
+    <string name="sfiction">Ciencia Ficción</string>
+    <string name="war">Bélicas</string>
+    <string name="wastern">Western</string>
+    <string name="horror">Terror</string>
+
+    
+    
 </resources>

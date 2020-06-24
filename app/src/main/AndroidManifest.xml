@@ -24,14 +24,20 @@
 
         <activity
             android:theme="@style/DetailActivity"
-            android:name="com.nramos.mimoflix.ui.moviedetail.MovieDetailActivity" />
+            android:name=".ui.moviedetail.MovieDetailActivity" />
+
+        <activity
+            android:theme="@style/SearchActivity"
+            android:name=".ui.search.SearchActivity" />
+
+        <activity
+            android:theme="@style/ActorDetailActivity"
+            android:name=".ui.actordetail.ActorDetailActivity" />
 
         <activity
             android:screenOrientation="landscape"
             android:theme="@style/TrailerActivity"
             android:name=".ui.trailer.TrailerActivity" />
-
-        <activity android:name=".ui.search.SearchActivity" />
 
     </application>
 

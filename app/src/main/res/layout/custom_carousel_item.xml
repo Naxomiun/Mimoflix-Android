@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="230dp">
+
+            <ImageView
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:id="@+id/iv_poster_movie"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/poster_content_description"
+                android:scaleType="centerCrop"
+                tools:src="@drawable/recommended_drive" />
+
+            <com.dansdev.library_autofittextview.AutofitTextView
+                app:layout_constraintStart_toStartOf="@id/rb_movie"
+                app:layout_constraintBottom_toTopOf="@id/rb_movie"
+                android:singleLine="true"
+                android:gravity="bottom"
+                android:maxLines="2"
+                app:minTextSize="25sp"
+                android:shadowColor="@color/black"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:fontFamily="@font/proxima_nova_bold"
+                android:textSize="40sp"
+                android:textAllCaps="true"
+                tools:text="DRIVE"
+                android:id="@+id/tv_title"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <RatingBar
+                android:layout_margin="@dimen/default_right_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:id="@+id/rb_movie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:progressTint="@color/white"
+                android:numStars="5"
+                android:isIndicator="true"
+                android:stepSize="0.1"
+                android:clickable="false"
+                android:theme="@style/RecommendedGenreRatingBar"
+                style="@style/RecommendedGenreRatingBar"
+                tools:rating="4.5" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
