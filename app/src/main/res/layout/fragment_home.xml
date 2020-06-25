@@ -64,7 +64,22 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layoutAnimation="@anim/list_animation"
                     app:carouselItems="@{viewModel.recommendedMovies}" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_companies"
+                    style="@style/CustomRecyclerStyle"
+                    android:layout_marginTop="@dimen/detail_margin_between_sections"
+                    app:layout_constraintTop_toBottomOf="@id/rv_carousel"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:paddingStart="@dimen/default_half_left_margin"
+                    android:paddingEnd="@dimen/default_half_right_margin"
+                    app:flexboxItems="@{viewModel.companies}"
+                    android:layoutAnimation="@anim/list_animation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_genres"
@@ -75,10 +90,11 @@
                     android:layout_marginTop="@dimen/detail_margin_between_sections"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:spanCount="2"
-                    app:layout_constraintTop_toBottomOf="@id/rv_carousel"
+                    app:layout_constraintTop_toBottomOf="@id/rv_companies"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:orientation="horizontal"
+                    android:layoutAnimation="@anim/list_animation"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"/>
 

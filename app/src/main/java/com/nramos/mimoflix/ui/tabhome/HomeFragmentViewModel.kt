@@ -8,6 +8,7 @@ import com.nramos.mimoflix.api.LocalProvider
 import com.nramos.mimoflix.binding.RecyclerDataBindingItem
 import com.nramos.mimoflix.extension.toBindingItem
 import com.nramos.mimoflix.model.PopularPromoMovie
+import com.nramos.mimoflix.model.company.CompanyViewModel
 import com.nramos.mimoflix.model.localgenre.LocalGenreViewModel
 import com.nramos.mimoflix.model.movie.PopularPromoMovieViewModel
 import com.nramos.mimoflix.repo.actors.ActorRepository
@@ -28,15 +29,19 @@ class HomeFragmentViewModel(
     private val _genres = MutableLiveData<List<RecyclerDataBindingItem>>()
     val genres: LiveData<List<RecyclerDataBindingItem>> get() = _genres
 
+    private val _companies = MutableLiveData<List<RecyclerDataBindingItem>>()
+    val companies: LiveData<List<RecyclerDataBindingItem>> get() = _companies
+
     init {
         getPopularRecommendedMovies()
         getGenres()
+        getCompanies()
     }
 
     private fun getPopularRecommendedMovies() {
         viewModelScope.launch {
             _recommendedMovies.value = withContext(Dispatchers.IO) {
-                localProvider.getPopularPromoMovies.map {
+                localProvider.getPopularPromoMovies().map {
                     PopularPromoMovieViewModel(it) { movie, view ->
 
                     }.toBindingItem()
@@ -48,8 +53,20 @@ class HomeFragmentViewModel(
     private fun getGenres() {
         viewModelScope.launch {
             _genres.value = withContext(Dispatchers.IO) {
-                localProvider.getLocalGenres.map {
+                localProvider.getLocalGenres().map {
                     LocalGenreViewModel(it) {
+
+                    }.toBindingItem()
+                }
+            }
+        }
+    }
+
+    private fun getCompanies() {
+        viewModelScope.launch {
+            _companies.value = withContext(Dispatchers.IO) {
+                localProvider.getLocalCompanies().map {
+                    CompanyViewModel(it) {
 
                     }.toBindingItem()
                 }

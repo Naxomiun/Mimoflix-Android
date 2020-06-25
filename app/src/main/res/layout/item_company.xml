@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.nramos.mimoflix.model.company.CompanyViewModel" />
+    </data>
+
+    <ImageView
+        android:background="@color/colorAccent"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="@dimen/default_half_left_margin"
+        android:layout_marginEnd="@dimen/default_half_right_margin"
+        android:scaleType="centerInside"
+        android:src="@drawable/pixar2"
+        tools:ignore="ContentDescription" />
+
+</layout>

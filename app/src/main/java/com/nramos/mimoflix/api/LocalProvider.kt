@@ -1,12 +1,13 @@
 package com.nramos.mimoflix.api
 
 import com.nramos.mimoflix.R
+import com.nramos.mimoflix.model.company.Company
 import com.nramos.mimoflix.model.localgenre.LocalGenre
 import com.nramos.mimoflix.model.PopularPromoMovie
 
 class LocalProvider {
 
-    val getPopularPromoMovies : List<PopularPromoMovie> = listOf(
+    suspend fun getPopularPromoMovies() = listOf(
         PopularPromoMovie(
             64690,
             19.128,
@@ -55,7 +56,7 @@ class LocalProvider {
         )
     )
 
-    val getLocalGenres : List<LocalGenre> = listOf(
+    suspend fun getLocalGenres() = listOf(
         LocalGenre(
             28,
             R.string.action,
@@ -115,6 +116,29 @@ class LocalProvider {
             R.string.wastern,
             R.color.genre_western,
             R.drawable.gwestern
+        )
+    )
+
+    suspend fun getLocalCompanies() = listOf(
+        Company(
+            3,
+            R.drawable.pixar
+        ),
+        Company(
+            2,
+            R.drawable.disney
+        ),
+        Company(
+            7,
+            R.drawable.dreamworks
+        ),
+        Company(
+            1,
+            R.drawable.lucasfilm
+        ),
+        Company(
+            25,
+            R.drawable.centuryfox
         )
     )
 
