@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="bottom_nav_icon_size">24dp</dimen>
+    <dimen name="bottom_nav_height">70dp</dimen>
+    <dimen name="bottom_nav_height_plus_margin">85dp</dimen>
     <dimen name="default_left_margin">16dp</dimen>
     <dimen name="default_right_margin">16dp</dimen>
     <dimen name="default_half_left_margin">8dp</dimen>

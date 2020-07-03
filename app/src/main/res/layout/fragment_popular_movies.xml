@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="android.view.View"/>
         <variable
             name="viewModel"
             type="com.nramos.mimoflix.ui.tabmovies.MoviesFragmentViewModel" />
@@ -20,7 +19,7 @@
         android:paddingTop="@dimen/default_half_left_margin"
         android:paddingEnd="@dimen/default_half_left_margin"
         android:paddingStart="@dimen/default_half_right_margin"
-        android:paddingBottom="78dp"
+        android:paddingBottom="@dimen/bottom_nav_height_plus_margin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

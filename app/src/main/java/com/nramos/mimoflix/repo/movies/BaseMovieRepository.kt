@@ -3,9 +3,8 @@ package com.nramos.mimoflix.repo.movies
 import android.util.Log
 import com.nramos.mimoflix.extension.safeSubList
 import com.nramos.mimoflix.model.*
-import com.nramos.mimoflix.model.localgenre.LocalGenre
 import com.nramos.mimoflix.model.movie.Movie
-import com.nramos.mimoflix.persistance.MovieDB
+import com.nramos.mimoflix.model.moviedb.MovieDB
 import retrofit2.Response
 
 open class BaseMovieRepository {
@@ -78,16 +77,6 @@ open class BaseMovieRepository {
         return emptyList()
     }
 
-    suspend fun seriesSafeCall(function: suspend() -> Response<SerieApiResponse>) : List<Serie>? {
-        runCatching {
-            function.invoke()
-        }.onSuccess {
-            return if(it.isSuccessful) it.body()!!.results else emptyList()
-        }.onFailure {
-            Log.e("ERROR", it.message)
-        }
-        return emptyList()
-    }
 
     suspend fun favoritesRoomCall(function: suspend() -> List<MovieDB>) : List<MovieDB>? {
         runCatching {

@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.nramos.mimoflix.BuildConfig
 import com.nramos.mimoflix.binding.RecyclerDataBindingItem
 import com.nramos.mimoflix.extension.mapToFavorite
 import com.nramos.mimoflix.extension.toBindingItem
@@ -96,22 +97,24 @@ class MovieDetailActivityViewModel(
     }
 
     fun onBookmarkEvent() {
-        viewModelScope.launch {
-            _bookmarked.value = withContext(Dispatchers.IO) {
-                val favoriteExists = movieRepository.checkForId(movieId) ?: false
-               _movie.value?.let {
-                   val movieDB = it.mapToFavorite()
-                   if(favoriteExists) {
-                       movieRepository.deleteFavorite(movieDB)
-                   } else {
-                       movieRepository.saveFavorite(movieDB)
-                   }
-               }
-               !favoriteExists
-            }
+        if(BuildConfig.IS_PREMIUM) {
+            viewModelScope.launch {
+                _bookmarked.value = withContext(Dispatchers.IO) {
+                    val favoriteExists = movieRepository.checkForId(movieId) ?: false
+                    _movie.value?.let {
+                        val movieDB = it.mapToFavorite()
+                        if (favoriteExists) {
+                            movieRepository.deleteFavorite(movieDB)
+                        } else {
+                            movieRepository.saveFavorite(movieDB)
+                        }
+                    }
+                    !favoriteExists
+                }
 
-            _bookmarkAction.value = withContext(Dispatchers.IO) {
-                SingleEvent(movieRepository.checkForId(movieId) ?: false)
+                _bookmarkAction.value = withContext(Dispatchers.IO) {
+                    SingleEvent(movieRepository.checkForId(movieId) ?: false)
+                }
             }
         }
     }

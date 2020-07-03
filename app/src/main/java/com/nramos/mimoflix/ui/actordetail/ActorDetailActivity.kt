@@ -26,6 +26,13 @@ class ActorDetailActivity : AppCompatActivity() {
         }
         setContentView(binding.root)
 
+        setEvents()
+
+        viewModel.getActorDetail()
+        viewModel.getActorMovies()
+    }
+
+    private fun setEvents() {
         with(viewModel){
             observe(movieActionEvent) {
                 it.getContentIfNotHandled()?.let { movie ->
@@ -39,9 +46,6 @@ class ActorDetailActivity : AppCompatActivity() {
                 }
             }
         }
-
-        viewModel.getActorDetail()
-        viewModel.getActorMovies()
     }
 
     override fun onBackPressed() {

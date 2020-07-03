@@ -12,6 +12,7 @@ import com.nramos.mimoflix.ui.search.SearchActivity
 import com.nramos.mimoflix.databinding.FragmentMoviesBinding
 import com.nramos.mimoflix.extension.goTo
 import com.nramos.mimoflix.extension.observe
+import com.nramos.mimoflix.ui.favoriteactivity.FavoriteActivity
 import com.nramos.mimoflix.ui.moviedetail.MovieDetailActivity
 import com.nramos.mimoflix.ui.tabmovies.viewpager.FragmentMovieStateAdapter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -25,25 +26,8 @@ class MoviesFragment : Fragment() {
         return FragmentMoviesBinding.inflate(inflater, container, false).also {
             it.viewModel = viewModel
             it.lifecycleOwner = viewLifecycleOwner
-            it.viewpagerMovies.offscreenPageLimit = 4
-            it.viewpagerMovies.adapter = FragmentMovieStateAdapter(requireActivity().supportFragmentManager,
-                listOf(
-                    getString(R.string.fragment_movies_now_playing),
-                    getString(R.string.fragment_movies_popular),
-                    getString(R.string.fragment_movies_top_rated),
-                    getString(R.string.fragment_movies_upcoming)
-                )
-            )
-            it.toolbarFragmentMovies.inflateMenu(R.menu.shared_appbar_menu)
-            it.toolbarFragmentMovies.setOnMenuItemClickListener { item ->
-                when(item.itemId) {
-                    R.id.menu_action_search -> {
-                        requireContext().goTo<SearchActivity>()
-                    }
-                }
-                true
-            }
-            it.tablayout.setupWithViewPager(it.viewpagerMovies)
+            setupToolbar(it)
+            setupViewPager(it)
         }.root
     }
 
@@ -61,8 +45,31 @@ class MoviesFragment : Fragment() {
         }
     }
 
-    private fun setupToolbar() {
+    private fun setupToolbar(binding : FragmentMoviesBinding) {
+        binding.toolbarFragmentMovies.inflateMenu(R.menu.shared_appbar_menu)
+        binding.toolbarFragmentMovies.setOnMenuItemClickListener { item ->
+            when(item.itemId) {
+                R.id.menu_action_search -> {
+                    context?.goTo<SearchActivity>()
+                }
+                R.id.menu_action_favorite -> {
+                    context?.goTo<FavoriteActivity>()
+                }
+            }
+            true
+        }
+    }
 
+    private fun setupViewPager(binding : FragmentMoviesBinding) {
+        binding.viewpagerMovies.adapter = FragmentMovieStateAdapter(requireActivity().supportFragmentManager,
+            listOf(
+                getString(R.string.fragment_movies_now_playing),
+                getString(R.string.fragment_movies_popular),
+                getString(R.string.fragment_movies_top_rated),
+                getString(R.string.fragment_movies_upcoming)
+            )
+        )
+        binding.tablayout.setupWithViewPager(binding.viewpagerMovies)
     }
 
 }

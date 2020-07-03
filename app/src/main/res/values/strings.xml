@@ -15,7 +15,7 @@
     <!-- Miscelaneous -->
     <string name="poster_content_description">Imagen promocional del contenido</string>
     <string name="string_peliculas">Películas</string>
-    
+
     <!-- Search -->
     <string name="search_find_movies">Buscar películas...</string>
     <string name="search_last_searched">Buscado recientemente</string>
@@ -42,7 +42,11 @@
     <string name="war">Bélicas</string>
     <string name="wastern">Western</string>
     <string name="horror">Terror</string>
+    <string name="home_categories">Categorías</string>
+    <string name="conocido_por">Conocido por</string>
+    <string name="biography_title">Biografía</string>
+    <string name="search_title">Search</string>
+    <string name="favorites_title">Favorites</string>
 
-    
-    
+
 </resources>

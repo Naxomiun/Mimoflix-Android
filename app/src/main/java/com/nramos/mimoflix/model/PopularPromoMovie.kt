@@ -1,8 +1,10 @@
 package com.nramos.mimoflix.model
 
+import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 import com.nramos.mimoflix.model.Media
 
+@Keep
 data class PopularPromoMovie(
     @SerializedName("id") val id : Int?,
     @SerializedName("popularity") val popularity : Double?,

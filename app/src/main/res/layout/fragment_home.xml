@@ -21,7 +21,7 @@
             android:layout_height="wrap_content">
 
                 <androidx.appcompat.widget.Toolbar
-                    app:layout_scrollFlags="scroll|enterAlways"
+                    app:layout_scrollFlags="scroll|enterAlways|snap"
                     android:id="@+id/toolbar_fragment_movies"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -43,6 +43,7 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.core.widget.NestedScrollView
+            android:paddingBottom="@dimen/bottom_nav_height_plus_margin"
             android:animateLayoutChanges="true"
             android:id="@+id/viewpager_movies"
             android:overScrollMode="never"
@@ -56,45 +57,63 @@
                 android:layout_height="wrap_content">
 
                 <androidx.recyclerview.widget.RecyclerView
+                    style="@style/CustomRecyclerStyle"
+                    android:nestedScrollingEnabled="false"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     android:orientation="horizontal"
                     android:id="@+id/rv_carousel"
+                    android:paddingStart="@dimen/default_half_left_margin"
+                    android:paddingEnd="@dimen/default_half_right_margin"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layoutAnimation="@anim/list_animation"
-                    app:carouselItems="@{viewModel.recommendedMovies}" />
+                    app:carouselItems="@{viewModel.recommendedMovies}"/>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_companies"
                     style="@style/CustomRecyclerStyle"
+                    android:nestedScrollingEnabled="false"
                     android:layout_marginTop="@dimen/detail_margin_between_sections"
                     app:layout_constraintTop_toBottomOf="@id/rv_carousel"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="5"
                     android:paddingStart="@dimen/default_half_left_margin"
                     android:paddingEnd="@dimen/default_half_right_margin"
-                    app:flexboxItems="@{viewModel.companies}"
-                    android:layoutAnimation="@anim/list_animation"
+                    app:items="@{viewModel.companies}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_marginTop="@dimen/detail_margin_between_sections"
+                    android:id="@+id/tv_categories_title"
+                    android:layout_marginStart="@dimen/default_left_margin"
+                    android:layout_marginEnd="@dimen/default_right_margin"
+                    style="@style/SearchActivity.Title"
+                    android:text="@string/home_categories"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rv_companies"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"/>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_genres"
+                    android:nestedScrollingEnabled="false"
                     style="@style/CustomRecyclerStyle"
                     app:items="@{viewModel.genres}"
                     android:paddingStart="@dimen/default_half_left_margin"
                     android:paddingEnd="@dimen/default_half_right_margin"
-                    android:layout_marginTop="@dimen/detail_margin_between_sections"
+                    android:layout_marginTop="@dimen/detail_margin_between_same_section"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:spanCount="2"
-                    app:layout_constraintTop_toBottomOf="@id/rv_companies"
+                    app:layout_constraintTop_toBottomOf="@id/tv_categories_title"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:orientation="horizontal"
-                    android:layoutAnimation="@anim/list_animation"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"/>
 

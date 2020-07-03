@@ -7,11 +7,12 @@ import com.nramos.mimoflix.binding.RecyclerDataBindingItem
 import com.nramos.mimoflix.model.ActorMovieViewModel
 import com.nramos.mimoflix.model.ActorViewModel
 import com.nramos.mimoflix.model.MovieDetail
-import com.nramos.mimoflix.model.company.CompanyViewModel
+import com.nramos.mimoflix.model.company.LocalCompanyViewModel
 import com.nramos.mimoflix.model.localgenre.LocalGenreViewModel
 import com.nramos.mimoflix.model.movie.*
 import com.nramos.mimoflix.model.searchedterm.SearchedTermViewModel
-import com.nramos.mimoflix.persistance.MovieDB
+import com.nramos.mimoflix.model.moviedb.MovieDB
+import com.nramos.mimoflix.model.moviedb.MovieDBViewModel
 
 fun MovieDetail.mapToFavorite() = MovieDB(
     id = this.id ?: 0,
@@ -67,8 +68,14 @@ fun PopularPromoMovieViewModel.toBindingItem() = RecyclerDataBindingItem(
     layout = R.layout.item_carousel
 )
 
-fun CompanyViewModel.toBindingItem() = RecyclerDataBindingItem(
+fun LocalCompanyViewModel.toBindingItem() = RecyclerDataBindingItem(
     item = this,
     variableId = BR.viewModel,
     layout = R.layout.item_company
+)
+
+fun MovieDBViewModel.toBindingItem() = RecyclerDataBindingItem(
+    item = this,
+    variableId = BR.viewModel,
+    layout = R.layout.item_favorite
 )

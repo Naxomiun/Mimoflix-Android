@@ -11,7 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.ViewPropertyAnimatorListener
 import com.nramos.mimoflix.R
 
-class ClickImageView : AppCompatImageView {
+open class ClickImageView : AppCompatImageView {
 
     var scale = 0.9f
     var duration = 500
@@ -34,7 +34,7 @@ class ClickImageView : AppCompatImageView {
         getAttrs(attributeSet, defStyle)
     }
 
-    private fun onCreate() {
+     internal fun onCreate() {
         this.isClickable = true
         super.setOnClickListener {
             clickAnimation(this) {
@@ -46,7 +46,7 @@ class ClickImageView : AppCompatImageView {
         }
     }
 
-    private fun getAttrs(attrs: AttributeSet) {
+    internal fun getAttrs(attrs: AttributeSet) {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ClickImageView)
         try {
             setTypeArray(typedArray)
@@ -55,7 +55,7 @@ class ClickImageView : AppCompatImageView {
         }
     }
 
-    private fun getAttrs(attrs: AttributeSet, defStyle: Int) {
+    internal fun getAttrs(attrs: AttributeSet, defStyle: Int) {
         val typedArray =
             context.obtainStyledAttributes(attrs, R.styleable.ClickImageView, defStyle, 0)
         try {

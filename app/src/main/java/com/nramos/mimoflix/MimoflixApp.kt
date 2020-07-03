@@ -1,6 +1,7 @@
 package com.nramos.mimoflix
 
 import android.app.Application
+import androidx.viewbinding.BuildConfig
 import com.nramos.mimoflix.di.networkModule
 import com.nramos.mimoflix.di.otherModule
 import com.nramos.mimoflix.di.roomModule
@@ -14,7 +15,7 @@ class MimoflixApp : Application() {
     override fun onCreate() {
         super.onCreate()
         startKoin {
-            androidLogger()
+                androidLogger()
             androidContext(this@MimoflixApp)
             modules(viewModelModule, networkModule, roomModule, otherModule)
         }

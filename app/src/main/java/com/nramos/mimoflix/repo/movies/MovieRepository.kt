@@ -2,17 +2,14 @@ package com.nramos.mimoflix.repo.movies
 
 
 import com.nramos.mimoflix.api.ApiService
-import com.nramos.mimoflix.api.LocalProvider
 import com.nramos.mimoflix.model.*
-import com.nramos.mimoflix.model.localgenre.LocalGenre
 import com.nramos.mimoflix.model.movie.Movie
 import com.nramos.mimoflix.persistance.FavoriteDao
-import com.nramos.mimoflix.persistance.MovieDB
+import com.nramos.mimoflix.model.moviedb.MovieDB
 
 class MovieRepository(
     private val apiService: ApiService,
-    private val roomDao: FavoriteDao,
-    private val localProvider: LocalProvider
+    private val roomDao: FavoriteDao
 ) : BaseMovieRepository() {
 
     suspend fun getAllFavorites(): List<MovieDB>? {
@@ -49,6 +46,24 @@ class MovieRepository(
         }
     }
 
+    suspend fun getNowPlayingMovies() : List<Movie> {
+        return moviesSafeCall {
+            apiService.getNowPlayingMovies()
+        }
+    }
+
+    suspend fun getTopRatedMovies() : List<Movie> {
+        return moviesSafeCall {
+            apiService.getTopRatedMovies()
+        }
+    }
+
+    suspend fun getUpcomingMovies() : List<Movie> {
+        return moviesSafeCall {
+            apiService.getUpcomingMovies()
+        }
+    }
+
     suspend fun getTrendingMovies() : List<Movie> {
         return moviesSafeCall {
             apiService.getTredingMovies()
@@ -67,18 +82,6 @@ class MovieRepository(
         }
     }
 
-    suspend fun getRecommendedSeries() : List<Serie>? {
-        return seriesSafeCall {
-            apiService.getRecommendedSeries()
-        }
-    }
-
-    suspend fun getMovieImages(id : Int) : List<Backdrop>? {
-        return movieImagesSafeCall {
-            apiService.getMovieImages(id)
-        }
-    }
-
     suspend fun getMovieDetail(id : Int) : MovieDetail? {
         return movieDetailSafeCall {
             apiService.getMovieDetail(id)
@@ -94,6 +97,12 @@ class MovieRepository(
     suspend fun getMoviesPerGenre(id : Int) : List<Movie> {
         return moviesSafeCall {
             apiService.getMoviesPerGenre(id)
+        }
+    }
+
+    suspend fun getMoviesPerCompany(id : Int) : List<Movie> {
+        return moviesSafeCall {
+            apiService.getMoviesPerCompany(id)
         }
     }
 

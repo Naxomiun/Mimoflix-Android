@@ -11,10 +11,11 @@
 
     <com.nramos.mimoflix.customviews.CarouselMovieItem
         android:id="@+id/custom_carousel_item"
-        android:layout_marginEnd="@dimen/default_right_margin"
-        android:layout_marginStart="@dimen/default_left_margin"
+        android:layout_marginEnd="@dimen/default_half_right_margin"
+        android:layout_marginStart="@dimen/default_half_left_margin"
+        android:onClick="@{() -> viewModel.onClick()}"
         app:carouselItem="@{viewModel.movie}"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content" />
 
 </layout>

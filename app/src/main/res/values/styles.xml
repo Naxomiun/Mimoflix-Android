@@ -188,6 +188,10 @@
         <item name="android:windowSharedElementExitTransition">@transition/arc_transition</item>
     </style>
 
+    <style name="ActorDetailActivity.ActorImage" parent="ActorDetailActivity">
+        <item name="android:foreground">@drawable/cast_image_foreground</item>
+    </style>
+
 
     <!-- Dialog favorite -->
 

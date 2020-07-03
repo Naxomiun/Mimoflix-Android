@@ -1,8 +1,10 @@
 package com.nramos.mimoflix.model
 
+import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 import com.nramos.mimoflix.extension.minsToStringFormat
 
+@Keep
 data class MovieDetail(
     @SerializedName("id") val id : Int?,
     @SerializedName("genres") val genres : List<MovieGenre>?,

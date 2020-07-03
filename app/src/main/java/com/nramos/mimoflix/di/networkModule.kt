@@ -40,7 +40,7 @@ val networkModule = module {
     }
 
     single {
-        MovieRepository(get(), get(), get())
+        MovieRepository(get(), get())
     }
 
     single {

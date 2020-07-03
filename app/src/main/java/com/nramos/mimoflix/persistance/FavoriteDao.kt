@@ -1,6 +1,7 @@
 package com.nramos.mimoflix.persistance
 
 import androidx.room.*
+import com.nramos.mimoflix.model.moviedb.MovieDB
 
 @Dao
 interface FavoriteDao {

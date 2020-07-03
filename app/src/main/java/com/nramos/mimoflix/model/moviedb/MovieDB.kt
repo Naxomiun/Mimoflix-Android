@@ -1,4 +1,4 @@
-package com.nramos.mimoflix.persistance
+package com.nramos.mimoflix.model.moviedb
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

@@ -7,20 +7,18 @@ import androidx.lifecycle.viewModelScope
 import com.nramos.mimoflix.api.LocalProvider
 import com.nramos.mimoflix.binding.RecyclerDataBindingItem
 import com.nramos.mimoflix.extension.toBindingItem
-import com.nramos.mimoflix.model.PopularPromoMovie
-import com.nramos.mimoflix.model.company.CompanyViewModel
+import com.nramos.mimoflix.model.company.LocalCompany
+import com.nramos.mimoflix.model.company.LocalCompanyViewModel
+import com.nramos.mimoflix.model.localgenre.LocalGenre
 import com.nramos.mimoflix.model.localgenre.LocalGenreViewModel
 import com.nramos.mimoflix.model.movie.PopularPromoMovieViewModel
-import com.nramos.mimoflix.repo.actors.ActorRepository
-import com.nramos.mimoflix.repo.movies.MovieRepository
+import com.nramos.mimoflix.utils.SingleEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class HomeFragmentViewModel(
-    private val localProvider: LocalProvider,
-    private val movieRepository: MovieRepository,
-    private val actorRepository: ActorRepository
+    private val localProvider: LocalProvider
 ) : ViewModel() {
 
     private val _recommendedMovies = MutableLiveData<List<RecyclerDataBindingItem>>()
@@ -32,6 +30,15 @@ class HomeFragmentViewModel(
     private val _companies = MutableLiveData<List<RecyclerDataBindingItem>>()
     val companies: LiveData<List<RecyclerDataBindingItem>> get() = _companies
 
+    private val _movieActionEvent = MutableLiveData<SingleEvent<Int>>()
+    val movieActionEvent : LiveData<SingleEvent<Int>> get() = _movieActionEvent
+
+    private val _companyActionEvent = MutableLiveData<SingleEvent<LocalCompany>>()
+    val companyActionEvent : LiveData<SingleEvent<LocalCompany>> get() = _companyActionEvent
+
+    private val _genreActionEvent = MutableLiveData<SingleEvent<LocalGenre>>()
+    val genreActionEvent : LiveData<SingleEvent<LocalGenre>> get() = _genreActionEvent
+
     init {
         getPopularRecommendedMovies()
         getGenres()
@@ -42,8 +49,8 @@ class HomeFragmentViewModel(
         viewModelScope.launch {
             _recommendedMovies.value = withContext(Dispatchers.IO) {
                 localProvider.getPopularPromoMovies().map {
-                    PopularPromoMovieViewModel(it) { movie, view ->
-
+                    PopularPromoMovieViewModel(it) { movie ->
+                        _movieActionEvent.value = SingleEvent(movie?.id ?: 0)
                     }.toBindingItem()
                 }
             }
@@ -53,9 +60,11 @@ class HomeFragmentViewModel(
     private fun getGenres() {
         viewModelScope.launch {
             _genres.value = withContext(Dispatchers.IO) {
-                localProvider.getLocalGenres().map {
-                    LocalGenreViewModel(it) {
-
+                localProvider.getLocalGenres().map { it ->
+                    LocalGenreViewModel(it) { genre ->
+                        genre?.let { it ->
+                            _genreActionEvent.value = SingleEvent(it)
+                        }
                     }.toBindingItem()
                 }
             }
@@ -66,8 +75,10 @@ class HomeFragmentViewModel(
         viewModelScope.launch {
             _companies.value = withContext(Dispatchers.IO) {
                 localProvider.getLocalCompanies().map {
-                    CompanyViewModel(it) {
-
+                    LocalCompanyViewModel(it) { company ->
+                        company?.let { it ->
+                            _companyActionEvent.value = SingleEvent(it)
+                        }
                     }.toBindingItem()
                 }
             }

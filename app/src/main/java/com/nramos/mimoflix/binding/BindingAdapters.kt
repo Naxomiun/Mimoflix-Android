@@ -9,23 +9,15 @@ import androidx.core.content.ContextCompat
 import androidx.core.text.buildSpannedString
 import androidx.core.text.color
 import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearSnapHelper
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.*
 import coil.api.load
 import coil.transform.BlurTransformation
 import coil.transform.RoundedCornersTransformation
-import com.google.android.flexbox.FlexDirection
-import com.google.android.flexbox.FlexWrap
-import com.google.android.flexbox.FlexboxLayoutManager
-import com.google.android.flexbox.JustifyContent
 import com.nramos.mimoflix.R
 import com.nramos.mimoflix.customviews.CarouselMovieItem
 import com.nramos.mimoflix.extension.loadAsyncImageResource
 import com.nramos.mimoflix.model.PopularPromoMovie
 import com.nramos.mimoflix.utils.Constants
-
 
 @BindingAdapter("items")
 fun setRecyclerBindingItems(recyclerView: RecyclerView, items: List<RecyclerDataBindingItem>?) {
@@ -59,24 +51,8 @@ fun setCarouselBindingItems(recyclerView: RecyclerView, items: List<RecyclerData
     var adapter = (recyclerView.adapter as? RecyclerDataBindingAdapter)
     if (adapter == null) {
         adapter = RecyclerDataBindingAdapter()
-        LinearSnapHelper().attachToRecyclerView(recyclerView)
         recyclerView.adapter = adapter
-    }
-    adapter.updateData(items.orEmpty())
-    recyclerView.scheduleLayoutAnimation()
-}
-
-@BindingAdapter("flexboxItems")
-fun setFlexboxBindingItems(recyclerView: RecyclerView, items: List<RecyclerDataBindingItem>?) {
-    val layoutManager = FlexboxLayoutManager(recyclerView.context)
-    layoutManager.flexDirection = FlexDirection.ROW
-    layoutManager.justifyContent = JustifyContent.SPACE_AROUND
-    layoutManager.flexWrap = FlexWrap.WRAP
-    recyclerView.layoutManager = layoutManager
-    var adapter = (recyclerView.adapter as? RecyclerDataBindingAdapter)
-    if (adapter == null) {
-        adapter = RecyclerDataBindingAdapter()
-        recyclerView.adapter = adapter
+        PagerSnapHelper().attachToRecyclerView(recyclerView)
     }
     adapter.updateData(items.orEmpty())
     recyclerView.scheduleLayoutAnimation()
@@ -107,6 +83,13 @@ fun setImageFromDrawableBinding(imageView: ImageView, res : Int, dimen : Float) 
     imageView.load(res) {
         crossfade(true)
         transformations(RoundedCornersTransformation(dimen))
+    }
+}
+
+@BindingAdapter("drawableSrc")
+fun setImageFromDrawableBinding(imageView: ImageView, res : Int) {
+    imageView.load(res) {
+        crossfade(true)
     }
 }
 

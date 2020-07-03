@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.nramos.mimoflix.model.moviedb.MovieDB
 import com.nramos.mimoflix.persistance.AppRoomDataBase.Companion.DB_VERSION
 
 @Database(entities = [MovieDB::class], version = DB_VERSION, exportSchema = false)

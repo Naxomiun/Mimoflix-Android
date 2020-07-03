@@ -1,7 +1,7 @@
 package com.nramos.mimoflix.api
 
 import com.nramos.mimoflix.R
-import com.nramos.mimoflix.model.company.Company
+import com.nramos.mimoflix.model.company.LocalCompany
 import com.nramos.mimoflix.model.localgenre.LocalGenre
 import com.nramos.mimoflix.model.PopularPromoMovie
 
@@ -120,25 +120,30 @@ class LocalProvider {
     )
 
     suspend fun getLocalCompanies() = listOf(
-        Company(
+        LocalCompany(
             3,
-            R.drawable.pixar
+            R.drawable.pixar2,
+            "Pixar"
         ),
-        Company(
+        LocalCompany(
             2,
-            R.drawable.disney
+            R.drawable.disney,
+            "Disney"
         ),
-        Company(
+        LocalCompany(
             7,
-            R.drawable.dreamworks
+            R.drawable.dreamworks,
+            "Dreamworks"
         ),
-        Company(
+        LocalCompany(
             1,
-            R.drawable.lucasfilm
+            R.drawable.lucasfilm,
+            "LucasFilm"
         ),
-        Company(
+        LocalCompany(
             25,
-            R.drawable.centuryfox
+            R.drawable.centuryfox,
+            "20 Century Fox"
         )
     )
 

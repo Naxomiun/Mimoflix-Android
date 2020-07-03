@@ -6,17 +6,19 @@
     <data>
         <variable
             name="viewModel"
-            type="com.nramos.mimoflix.model.company.CompanyViewModel" />
+            type="com.nramos.mimoflix.model.company.LocalCompanyViewModel" />
     </data>
 
-    <ImageView
-        android:background="@color/colorAccent"
-        android:layout_width="80dp"
+    <com.nramos.mimoflix.customviews.SquareClickImageView
+        app:imageView_duration="200"
+        app:drawableSrc="@{viewModel.localCompany.logo}"
+        android:background="@drawable/background_company_item"
+        android:onClick="@{() -> viewModel.onClick()}"
+        android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_marginStart="@dimen/default_half_left_margin"
         android:layout_marginEnd="@dimen/default_half_right_margin"
         android:scaleType="centerInside"
-        android:src="@drawable/pixar2"
         tools:ignore="ContentDescription" />
 
 </layout>

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.NestedScrollView
+import androidx.databinding.library.BuildConfig
 import com.nramos.mimoflix.databinding.ActivityDetailBinding
 import com.nramos.mimoflix.extension.goTo
 import com.nramos.mimoflix.extension.observe
