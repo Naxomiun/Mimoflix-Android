@@ -6,6 +6,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.nramos.mimoflix.R
 import com.nramos.mimoflix.databinding.ActivityMainBinding
+import com.nramos.mimoflix.utils.StyleManager
 import org.koin.androidx.scope.lifecycleScope
 import org.koin.androidx.viewmodel.scope.viewModel
 
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     private val viewModel : MainActivityViewModel by lifecycleScope.viewModel(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setStyle()
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater).also {
             it.viewModel = viewModel
@@ -24,6 +26,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupNavigation()
+    }
+
+    private fun setStyle() {
+        when(StyleManager(context = this).getMode())  {
+            true -> setTheme(R.style.Mimoflix_Dark)
+            false -> setTheme(R.style.Mimoflix_Light)
+        }
     }
 
     private fun setupNavigation() {

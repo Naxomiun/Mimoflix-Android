@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nramos.mimoflix">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <application
         android:name=".MimoflixApp"
         android:allowBackup="true"
@@ -15,41 +15,30 @@
         android:supportsRtl="true"
         android:theme="@style/Mimoflix.Light"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.mainactivity.MainActivity">
+        <activity android:name=".ui.settings.SettingsActivity"></activity>
+        <activity
+            android:name=".ui.mainactivity.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.moviedetail.MovieDetailActivity"
-            android:theme="@style/DetailActivity" />
-        <activity
-            android:name=".ui.search.SearchActivity"
-            android:theme="@style/SearchActivity" />
-        <activity
-            android:name=".ui.actordetail.ActorDetailActivity"
-            android:theme="@style/ActorDetailActivity" />
-        <activity
-            android:name=".ui.genrelist.MoviesGenreActivity"
-            android:theme="@style/Mimoflix.Light">
+        <activity android:name=".ui.moviedetail.MovieDetailActivity" />
+        <activity android:name=".ui.search.SearchActivity" />
+        <activity android:name=".ui.actordetail.ActorDetailActivity" />
+        <activity android:name=".ui.companylist.MoviesCompanyActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.nramos.mimoflix.ui.mainactivity.MainActivity" />
         </activity>
-        <activity
-            android:name=".ui.companylist.MoviesCompanyActivity"
-            android:theme="@style/Mimoflix.Light">
+        <activity android:name=".ui.genrelist.MoviesGenreActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.nramos.mimoflix.ui.mainactivity.MainActivity" />
         </activity>
-
-        <activity
-            android:name=".ui.favoriteactivity.FavoriteActivity"
-            android:theme="@style/Mimoflix.Light"/>
-
+        <activity android:name=".ui.favoriteactivity.FavoriteActivity" />
         <activity
             android:name=".ui.trailer.TrailerActivity"
             android:screenOrientation="landscape"

@@ -1,5 +1,6 @@
 package com.nramos.mimoflix.ui.companylist
 
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -17,10 +18,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class MoviesCompanyActivityViewModel(
-    private val movieRepository: MovieRepository
+    private val movieRepository: MovieRepository,
+    val company: LocalCompany
 ) : ViewModel() {
-
-    lateinit var company : LocalCompany
 
     private val _movies = MutableLiveData<List<RecyclerDataBindingItem?>>()
     val movies : LiveData<List<RecyclerDataBindingItem?>> get() = _movies
@@ -28,7 +28,12 @@ class MoviesCompanyActivityViewModel(
     private val _movieActionEvent = MutableLiveData<SingleEvent<Pair<Movie, View>>>()
     val movieActionEvent : LiveData<SingleEvent<Pair<Movie, View>>> get() = _movieActionEvent
 
-    fun getMoviesByCompany() {
+    init {
+        Log.e("Company", company.name)
+        getMoviesByCompany()
+    }
+
+    private fun getMoviesByCompany() {
         viewModelScope.launch {
             _movies.value = withContext(Dispatchers.IO) {
                 movieRepository.getMoviesPerCompany(company.id).map {

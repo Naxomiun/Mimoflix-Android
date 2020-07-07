@@ -33,7 +33,7 @@
                         android:fontFamily="@font/gotham_black"
                         android:layout_gravity="center"
                         app:customToolbarTitle="@{@string/app_name}"
-                        android:textColor="@color/colorAccent"
+                        android:textColor="?attr/textColorThemed"
                         android:textSize="30sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
@@ -92,7 +92,7 @@
                     android:id="@+id/tv_categories_title"
                     android:layout_marginStart="@dimen/default_left_margin"
                     android:layout_marginEnd="@dimen/default_right_margin"
-                    style="@style/SearchActivity.Title"
+                    style="@style/TitleStyle"
                     android:text="@string/home_categories"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

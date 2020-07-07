@@ -122,7 +122,7 @@ class LocalProvider {
     suspend fun getLocalCompanies() = listOf(
         LocalCompany(
             3,
-            R.drawable.pixar2,
+            R.drawable.pixar,
             "Pixar"
         ),
         LocalCompany(

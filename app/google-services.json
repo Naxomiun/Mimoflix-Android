@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "414813944412",
+    "firebase_url": "https://mimoflix-android-1594036048117.firebaseio.com",
+    "project_id": "mimoflix-android-1594036048117",
+    "storage_bucket": "mimoflix-android-1594036048117.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:414813944412:android:ee65e53cb34828fba44499",
+        "android_client_info": {
+          "package_name": "com.nramos.mimoflix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "414813944412-rdb4ut7dmu2ukg3ih13u5oqq5ss6132e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nramos.mimoflix",
+            "certificate_hash": "2a5271a05e20755916a7b97b87234515b2e739d7"
+          }
+        },
+        {
+          "client_id": "414813944412-crl3bgc903sudaph7bbeanuo243l81jh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nramos.mimoflix",
+            "certificate_hash": "5703e69823842076ca4a482c0494e81b66d67321"
+          }
+        },
+        {
+          "client_id": "414813944412-8m96f13ejq2odm9c12rledl3o451v85o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARqcEA_1X4atWhnqFN3ZB8T4Xf9U31A4k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "414813944412-8m96f13ejq2odm9c12rledl3o451v85o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

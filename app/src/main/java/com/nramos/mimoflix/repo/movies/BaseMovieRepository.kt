@@ -10,7 +10,7 @@ import retrofit2.Response
 open class BaseMovieRepository {
 
     suspend fun trailerSafeCall(function: suspend() -> Response<TrailerApiResponse>) : Trailer? {
-        kotlin.runCatching {
+        runCatching {
             function.invoke()
         }.onSuccess {
             if(it.isSuccessful) {
@@ -26,7 +26,7 @@ open class BaseMovieRepository {
     }
 
     suspend fun movieImagesSafeCall(function: suspend() -> Response<ImageResponse>) : List<Backdrop>? {
-        kotlin.runCatching {
+        runCatching {
             function.invoke()
         }.onSuccess {
             return if(it.isSuccessful) it.body()?.images?.safeSubList(0, 5)

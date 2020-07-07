@@ -10,6 +10,7 @@
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:background="?attr/colorBackgroundThemed"
         android:id="@+id/main_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -32,6 +33,7 @@
                 app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
 
                 <androidx.appcompat.widget.Toolbar
+                    app:navigationIcon="@drawable/ic_back"
                     android:id="@+id/toolbar_favorites"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
@@ -42,16 +44,11 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            style="@style/CustomRecyclerStyle"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:id="@+id/viewpager_movies"
-            app:items="@{viewModel.movies}"
-            android:layoutAnimation="@anim/list_animation"
-            android:paddingTop="@dimen/detail_margin_between_same_section"
-            android:paddingBottom="@dimen/detail_margin_between_same_section"
-            android:paddingStart="@dimen/default_half_right_margin"
-            android:paddingEnd="@dimen/default_half_right_margin"
+        <TextView
+            android:text="Para acceder a esta funcionalidad compre la versión Premium"
+            style="@style/TitleStyle"
+            android:textAlignment="center"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />

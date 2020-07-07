@@ -50,7 +50,7 @@
                 app:layout_constraintStart_toEndOf="@id/iv_top_back_button"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:text="@{viewModel.movie.title}"
-                android:textColor="@color/black"
+                android:textColor="?attr/textColorThemed"
                 android:layout_marginStart="25dp"
                 android:layout_marginEnd="25dp"
                 android:fontFamily="@font/proxima_nova_bold"
@@ -79,7 +79,8 @@
                 android:layout_marginStart="@dimen/default_right_margin"
                 app:layout_constraintTop_toTopOf="@id/iv_poster_movie"
                 app:layout_constraintStart_toStartOf="parent"
-                app:backgroundTint="@color/white"
+                app:backgroundTint="?attr/colorBackgroundThemed"
+                android:tint="?attr/textColorThemed"
                 android:src="@drawable/ic_back"
                 android:onClick="@{() -> viewModel.onBackEvent()}"
                 app:fabSize="mini"
@@ -160,12 +161,10 @@
                 android:layout_height="0dp"/>
 
             <TextView
+                style="@style/MovieTitleStyle"
                 android:textAlignment="center"
                 android:id="@+id/tv_movie_title"
                 android:layout_marginTop="20dp"
-                android:textSize="32sp"
-                android:fontFamily="@font/gotham_bold"
-                android:textColor="@color/black"
                 android:layout_marginStart="@dimen/default_left_margin"
                 android:layout_marginEnd="@dimen/default_right_margin"
                 app:layout_constraintStart_toStartOf="parent"
@@ -243,7 +242,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_play_trailer"
                 android:layout_marginTop="@dimen/detail_margin_between_same_section"
-                style="@style/DetailActivity.TrailerButton"
+                style="@style/TrailerButtonStyle"
                 android:onClick="@{() -> viewModel.onPlayTrailerEvent()}"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="@dimen/default_right_margin"
@@ -263,7 +262,7 @@
                 app:layout_constraintTop_toBottomOf="@id/button_play_trailer"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                style="@style/DetailActivity.Section.Title"
+                style="@style/TitleStyle"
                 android:text="@string/detail_synosis_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"/>
@@ -276,7 +275,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_title_overview"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                style="@style/DetailActivity.Section.Subtitle"
+                style="@style/SubtitleStyle"
                 android:text="@{viewModel.movie.synopsis}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"/>
@@ -289,7 +288,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_overview"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                style="@style/DetailActivity.Section.Title"
+                style="@style/TitleStyle"
                 android:text="@string/detail_cast_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"/>
@@ -317,7 +316,7 @@
                 app:layout_constraintTop_toBottomOf="@id/rv_cast"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                style="@style/DetailActivity.Section.Title"
+                style="@style/TitleStyle"
                 android:text="@string/detail_related_movies"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"/>

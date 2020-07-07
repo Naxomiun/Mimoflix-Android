@@ -5,12 +5,15 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.nramos.mimoflix.model.moviedb.MovieDB
+import com.nramos.mimoflix.model.recentcast.RecentCast
+import com.nramos.mimoflix.model.recentmovie.RecentMovie
 import com.nramos.mimoflix.persistance.AppRoomDataBase.Companion.DB_VERSION
 
-@Database(entities = [MovieDB::class], version = DB_VERSION, exportSchema = false)
+@Database(entities = [MovieDB::class, RecentCast::class, RecentMovie::class], version = DB_VERSION, exportSchema = false)
 abstract class AppRoomDataBase : RoomDatabase() {
 
     abstract fun getFavoriteDao(): FavoriteDao
+    abstract fun getRecentDao(): RecentDao
 
     companion object {
 

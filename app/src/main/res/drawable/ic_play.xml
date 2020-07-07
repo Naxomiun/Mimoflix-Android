@@ -5,8 +5,8 @@
     android:height="24dp">
     <path
         android:pathData="M11.5 14.6L14.31 12 11.5 9.4 11.5 14.6Z"
-        android:fillColor="#000000" />
+        android:fillColor="?attr/textColorThemed" />
     <path
         android:pathData="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm4 11.18l-3.64 3.37a1.74 1.74 0 0 1 -1.16 0.45 1.68 1.68 0 0 1 -0.69 -0.15 1.6 1.6 0 0 1 -1 -1.48V8.63a1.6 1.6 0 0 1 1 -1.48 1.7 1.7 0 0 1 1.85 0.3L16 10.82a1.6 1.6 0 0 1 0 2.36z"
-        android:fillColor="#000000" />
+        android:fillColor="?attr/textColorThemed" />
 </vector>

@@ -44,6 +44,9 @@ class SearchActivityViewModel (
     private val _backActionEvent = MutableLiveData<SingleEvent<Boolean>>()
     val backActionEvent : LiveData<SingleEvent<Boolean>> get() = _backActionEvent
 
+    private val _speechEvent = MutableLiveData<SingleEvent<Boolean>>()
+    val speechEvent : LiveData<SingleEvent<Boolean>> get() = _speechEvent
+
     init {
         getLastSearchedTerms()
         getMostSearchedMovies()
@@ -75,7 +78,7 @@ class SearchActivityViewModel (
         }
     }
 
-    private fun searchMovies(query : String) {
+    fun searchMovies(query : String) {
         viewModelScope.launch {
             _isSearching.value = true
             _searchedMovies.value = withContext(Dispatchers.IO) {
@@ -106,6 +109,10 @@ class SearchActivityViewModel (
                 getMostSearchedMovies()
             }
         }
+    }
+
+    fun onSpeechEvent() {
+        _speechEvent.value = SingleEvent(true)
     }
 
 }

@@ -34,7 +34,6 @@
             android:layout_height="wrap_content"/>
 
         <LinearLayout
-            android:layout_marginEnd="@dimen/default_right_margin"
             android:layout_marginTop="@dimen/detail_margin_between_sections"
             android:id="@+id/ll_search_input"
             android:padding="12dp"
@@ -43,7 +42,7 @@
             android:orientation="horizontal"
             android:background="@drawable/rounded_search_input"
             android:elevation="26dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/iv_speech"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_search_back_button"
             android:layout_width="0dp"
@@ -57,18 +56,33 @@
 
             <!--suppress AndroidUnknownAttribute -->
             <EditText
-                style="@style/SearchActivity.Input"
+                android:layout_weight="1"
+                style="@style/SearchInput"
                 android:text="@{viewModel.currentSearchQuery}"
                 app:onEditorEnterAction="@{viewModel.saveSearchedTerm}"
                 android:onTextChanged="@{viewModel.onSearchEvent}"
                 android:layout_marginStart="@dimen/default_half_right_margin"
                 android:layout_marginEnd="@dimen/default_half_left_margin"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 tools:ignore="LabelFor"
                 android:importantForAutofill="no" />
 
         </LinearLayout>
+
+        <ImageView
+            style="@style/ClickableImageView"
+            android:onClick="@{() -> viewModel.onSpeechEvent()}"
+            android:layout_margin="@dimen/default_right_margin"
+            app:layout_constraintStart_toEndOf="@id/ll_search_input"
+            app:layout_constraintBottom_toBottomOf="@id/ll_search_input"
+            app:layout_constraintTop_toTopOf="@id/ll_search_input"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/iv_speech"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_microphone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
         <androidx.core.widget.NestedScrollView
             android:overScrollMode="never"
@@ -86,7 +100,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    style="@style/SearchActivity.SubTitle"
+                    style="@style/SubtitleStyle"
                     android:visibility="@{viewModel.lastSearchTerms.size > 0 ? View.VISIBLE : View.GONE}"
                     android:layout_marginStart="@dimen/default_left_margin"
                     android:layout_marginEnd="@dimen/default_right_margin"
@@ -114,7 +128,7 @@
                     android:orientation="horizontal" />
 
                 <TextView
-                    style="@style/SearchActivity.Title"
+                    style="@style/TitleStyle"
                     android:layout_marginStart="@dimen/default_left_margin"
                     android:layout_marginEnd="@dimen/default_right_margin"
                     android:id="@+id/tv_search_most_searched_title"

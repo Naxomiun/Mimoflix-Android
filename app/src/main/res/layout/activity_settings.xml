@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:background="?attr/colorBackgroundThemed"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:padding="@dimen/default_left_margin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    style="@style/SubtitleStyle"
+                    android:id="@+id/tv_mode_select"
+                    android:padding="15dp"
+                    app:layout_constraintEnd_toStartOf="@id/sw_night_mode"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:drawableStart="@drawable/ic_night_mode"
+                    android:gravity="center_vertical"
+                    android:drawablePadding="15dp"
+                    android:text="Night mode"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+
+                <Switch
+                    app:layout_constraintTop_toTopOf="@id/tv_mode_select"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_mode_select"
+                    app:layout_constraintStart_toEndOf="@id/tv_mode_select"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:id="@+id/sw_night_mode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    style="@style/SubtitleStyle"
+                    android:id="@+id/tv_logout"
+                    android:padding="15dp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_mode_select"
+                    android:drawableStart="@drawable/ic_logout"
+                    android:gravity="center_vertical"
+                    android:drawablePadding="15dp"
+                    android:text="Log out"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/main_appbar"
+            app:liftOnScroll="true"
+            android:backgroundTint="?attr/colorBackgroundThemed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                app:navigationIcon="@drawable/ic_back"
+                app:titleTextColor="?attr/textColorThemed"
+                app:title="Settings"
+                android:id="@+id/settings_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"/>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

@@ -7,14 +7,15 @@
     <string name="fragment_genres_recomendados">Recomendados</string>
 
     <!-- Fragment movies -->
-    <string name="fragment_movies_now_playing">Now playing</string>
+    <string name="fragment_movies_now_playing">Ahora en cines</string>
     <string name="fragment_movies_popular">Popular</string>
-    <string name="fragment_movies_top_rated">Top Rated</string>
-    <string name="fragment_movies_upcoming">Upcoming</string>
+    <string name="fragment_movies_top_rated">Más votadas</string>
+    <string name="fragment_movies_upcoming">Próximamente</string>
 
     <!-- Miscelaneous -->
     <string name="poster_content_description">Imagen promocional del contenido</string>
     <string name="string_peliculas">Películas</string>
+    <string name="title_discover">Descubre</string>
 
     <!-- Search -->
     <string name="search_find_movies">Buscar películas...</string>
@@ -48,5 +49,7 @@
     <string name="search_title">Search</string>
     <string name="favorites_title">Favorites</string>
 
+    <!-- Fragment profile -->
+    <string name="profile_gservices_error">Ha ocurrido un error con los servicios de Google</string>
 
 </resources>

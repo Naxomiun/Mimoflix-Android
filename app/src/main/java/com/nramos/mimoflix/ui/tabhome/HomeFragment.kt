@@ -10,9 +10,7 @@ import com.nramos.mimoflix.extension.goTo
 import com.nramos.mimoflix.extension.observe
 import com.nramos.mimoflix.ui.companylist.MoviesCompanyActivity
 import com.nramos.mimoflix.ui.genrelist.MoviesGenreActivity
-import com.nramos.mimoflix.ui.genrelist.MoviesGenreActivityViewModel
 import com.nramos.mimoflix.ui.moviedetail.MovieDetailActivity
-import com.nramos.mimoflix.ui.trailer.TrailerActivity
 import org.koin.androidx.scope.lifecycleScope
 import org.koin.androidx.viewmodel.scope.viewModel
 

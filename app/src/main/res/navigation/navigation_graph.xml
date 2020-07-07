@@ -17,4 +17,10 @@
         android:label="Movies"
         tools:layout="@layout/fragment_movies"/>
 
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.nramos.mimoflix.ui.tabprofile.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile"/>
+
 </navigation>

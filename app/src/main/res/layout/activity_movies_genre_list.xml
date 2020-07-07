@@ -10,8 +10,39 @@
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:background="?attr/colorBackgroundThemed"
+        android:id="@+id/main_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            app:liftOnScroll="true"
+            android:backgroundTint="?attr/colorBackgroundThemed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:fitsSystemWindows="true"
+                app:collapsingTitle="@{viewModel.genre.name}"
+                app:expandedTitleMarginStart="16dp"
+                app:expandedTitleMarginBottom="6dp"
+                app:collapsedTitleTextAppearance="@style/TitleCollapsedStyle"
+                app:expandedTitleTextAppearance="@style/TitleExpandedStyle"
+                app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
+
+                <androidx.appcompat.widget.Toolbar
+                    app:navigationIcon="@drawable/ic_back"
+                    android:id="@+id/genreListToolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/transparent"
+                    app:layout_collapseMode="pin"/>
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:background="?attr/colorBackgroundThemed"
@@ -26,18 +57,6 @@
             android:paddingEnd="@dimen/default_half_right_margin"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
-
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/genre_list_toolbar"
-                android:background="?attr/colorBackgroundThemed"
-                android:layout_width="match_parent"
-                android:layout_height="?android:actionBarSize"/>
-
-        </com.google.android.material.appbar.AppBarLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

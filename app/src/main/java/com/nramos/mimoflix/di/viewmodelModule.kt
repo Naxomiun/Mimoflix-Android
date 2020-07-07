@@ -1,5 +1,7 @@
 package com.nramos.mimoflix.di
 
+import com.nramos.mimoflix.model.company.LocalCompany
+import com.nramos.mimoflix.model.localgenre.LocalGenre
 import com.nramos.mimoflix.ui.actordetail.ActorDetailActivity
 import com.nramos.mimoflix.ui.actordetail.ActorDetailActivityViewModel
 import com.nramos.mimoflix.ui.companylist.MoviesCompanyActivity
@@ -19,6 +21,8 @@ import com.nramos.mimoflix.ui.search.SearchActivityViewModel
 import com.nramos.mimoflix.ui.tabhome.HomeFragment
 import com.nramos.mimoflix.ui.tabhome.HomeFragmentViewModel
 import com.nramos.mimoflix.ui.tabmovies.MoviesFragmentViewModel
+import com.nramos.mimoflix.ui.tabprofile.ProfileFragment
+import com.nramos.mimoflix.ui.tabprofile.ProfileFragmentViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -29,11 +33,11 @@ val viewModelModule = module {
     }
 
     scope<MovieDetailActivity> {
-        viewModel { MovieDetailActivityViewModel(get()) }
+        viewModel { (movieId : Int) -> MovieDetailActivityViewModel(get(), get(), movieId) }
     }
 
     scope<ActorDetailActivity> {
-        viewModel { ActorDetailActivityViewModel(get()) }
+        viewModel { (actorId : Int) -> ActorDetailActivityViewModel(get(), get(), actorId) }
     }
 
     scope<TrailerActivity> {
@@ -49,15 +53,19 @@ val viewModelModule = module {
     }
 
     scope<MoviesGenreActivity> {
-        viewModel { MoviesGenreActivityViewModel(get()) }
+        viewModel { (genre : LocalGenre) -> MoviesGenreActivityViewModel(get(), genre) }
     }
 
     scope<MoviesCompanyActivity> {
-        viewModel { MoviesCompanyActivityViewModel(get()) }
+        viewModel { (company : LocalCompany) -> MoviesCompanyActivityViewModel(get(), company) }
     }
 
     scope<HomeFragment> {
         viewModel { HomeFragmentViewModel(get()) }
+    }
+
+    scope<ProfileFragment> {
+        viewModel { ProfileFragmentViewModel(get()) }
     }
 
     viewModel {

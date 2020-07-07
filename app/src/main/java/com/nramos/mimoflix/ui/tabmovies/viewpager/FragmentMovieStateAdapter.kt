@@ -2,6 +2,7 @@ package com.nramos.mimoflix.ui.tabmovies.viewpager
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.nramos.mimoflix.ui.tabmovies.viewpager.fragments.NowPlayingMoviesFragment
 import com.nramos.mimoflix.ui.tabmovies.viewpager.fragments.PopularMoviesFragment
@@ -11,7 +12,7 @@ import com.nramos.mimoflix.ui.tabmovies.viewpager.fragments.UpcomingMoviesFragme
 class FragmentMovieStateAdapter(
     fm : FragmentManager,
     private val titleList : List<String>
-) : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     override fun getItem(position: Int): Fragment = when(position) {
         0 -> { NowPlayingMoviesFragment() }

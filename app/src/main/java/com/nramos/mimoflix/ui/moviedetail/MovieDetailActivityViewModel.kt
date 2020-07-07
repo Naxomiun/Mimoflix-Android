@@ -1,5 +1,6 @@
 package com.nramos.mimoflix.ui.moviedetail
 
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,9 +9,11 @@ import androidx.lifecycle.viewModelScope
 import com.nramos.mimoflix.BuildConfig
 import com.nramos.mimoflix.binding.RecyclerDataBindingItem
 import com.nramos.mimoflix.extension.mapToFavorite
+import com.nramos.mimoflix.extension.mapToRecent
 import com.nramos.mimoflix.extension.toBindingItem
 import com.nramos.mimoflix.model.*
 import com.nramos.mimoflix.model.movie.RelatedMovieViewModel
+import com.nramos.mimoflix.persistance.RecentDao
 import com.nramos.mimoflix.repo.movies.MovieRepository
 import com.nramos.mimoflix.utils.SingleEvent
 import com.nramos.mimoflix.utils.SingleLiveEvent
@@ -19,10 +22,10 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class MovieDetailActivityViewModel(
-    private val movieRepository: MovieRepository
+    private val movieRepository: MovieRepository,
+    private val recentDao: RecentDao,
+    private val movieId : Int
 ) : ViewModel() {
-
-    var movieId : Int = 0
 
     private val _movie = MutableLiveData<MovieDetail?>()
     val movie : LiveData<MovieDetail?> get() = _movie
@@ -50,10 +53,19 @@ class MovieDetailActivityViewModel(
     private val _bookmarkAction = MutableLiveData<SingleEvent<Boolean>>()
     val bookmarkAction : LiveData<SingleEvent<Boolean>> get() = _bookmarkAction
 
-    fun getMovieDetail() {
+    init {
+        getMovieDetail()
+        getRelatedMovies()
+    }
+
+    private fun getMovieDetail() {
         viewModelScope.launch {
             _movie.value = withContext(Dispatchers.IO) {
                 movieRepository.getMovieDetail(movieId)
+            }
+
+            _movie.value?.let {
+                recentDao.insertRecentMovie(it.mapToRecent())
             }
 
             _bookmarked.value = withContext(Dispatchers.IO) {
@@ -74,7 +86,7 @@ class MovieDetailActivityViewModel(
         }
     }
 
-    fun getRelatedMovies() {
+    private fun getRelatedMovies() {
         viewModelScope.launch {
             _relatedMovies.value = withContext(Dispatchers.IO) {
                 movieRepository.getRelatedMovies(movieId)?.map {

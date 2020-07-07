@@ -18,10 +18,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class MoviesGenreActivityViewModel(
-    private val movieRepository: MovieRepository
+    private val movieRepository: MovieRepository,
+    val genre: LocalGenre
 ) : ViewModel() {
-
-    lateinit var genre : LocalGenre
 
     private val _movies = MutableLiveData<List<RecyclerDataBindingItem?>>()
     val movies : LiveData<List<RecyclerDataBindingItem?>> get() = _movies
@@ -29,7 +28,11 @@ class MoviesGenreActivityViewModel(
     private val _movieActionEvent = MutableLiveData<SingleEvent<Pair<Movie, View>>>()
     val movieActionEvent : LiveData<SingleEvent<Pair<Movie, View>>> get() = _movieActionEvent
 
-    fun getMoviesByGenre() {
+    init {
+        getMoviesByGenre()
+    }
+
+    private fun getMoviesByGenre() {
         viewModelScope.launch {
             _movies.value = withContext(Dispatchers.IO) {
                 movieRepository.getMoviesPerGenre(genre.id).map {

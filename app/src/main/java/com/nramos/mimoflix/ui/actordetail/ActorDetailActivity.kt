@@ -2,34 +2,36 @@ package com.nramos.mimoflix.ui.actordetail
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.nramos.mimoflix.R
 import com.nramos.mimoflix.databinding.ActivityActorBinding
 import com.nramos.mimoflix.extension.goTo
 import com.nramos.mimoflix.extension.observe
 import com.nramos.mimoflix.extension.setTranslucentActivity
 import com.nramos.mimoflix.ui.moviedetail.MovieDetailActivity
+import com.nramos.mimoflix.utils.StyleManager
 import org.koin.androidx.scope.lifecycleScope
 import org.koin.androidx.viewmodel.scope.viewModel
+import org.koin.core.parameter.parametersOf
 
 class ActorDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityActorBinding
-    private val viewModel : ActorDetailActivityViewModel by lifecycleScope.viewModel(this)
+    private val viewModel : ActorDetailActivityViewModel by lifecycleScope.viewModel(this) {
+        parametersOf(intent.getIntExtra("actorId", 0))
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setStyle()
         super.onCreate(savedInstanceState)
         setTranslucentActivity()
         supportPostponeEnterTransition()
         binding = ActivityActorBinding.inflate(layoutInflater).also {
-            viewModel.actorId = intent.getIntExtra("actorId", 0)
             it.viewModel = viewModel
             it.lifecycleOwner = this
         }
         setContentView(binding.root)
 
         setEvents()
-
-        viewModel.getActorDetail()
-        viewModel.getActorMovies()
     }
 
     private fun setEvents() {
@@ -50,6 +52,13 @@ class ActorDetailActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         supportFinishAfterTransition()
+    }
+
+    private fun setStyle() {
+        when(StyleManager(context = this).getMode())  {
+            true -> setTheme(R.style.DetailActivity_Dark)
+            false -> setTheme(R.style.DetailActivity_Light)
+        }
     }
 
     /*private fun setScrollListener() {

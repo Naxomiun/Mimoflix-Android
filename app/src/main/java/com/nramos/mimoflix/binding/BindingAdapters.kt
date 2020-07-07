@@ -1,6 +1,7 @@
 package com.nramos.mimoflix.binding
 
 import android.graphics.Color
+import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.*
 import coil.api.load
 import coil.transform.BlurTransformation
 import coil.transform.RoundedCornersTransformation
+import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.nramos.mimoflix.R
 import com.nramos.mimoflix.customviews.CarouselMovieItem
 import com.nramos.mimoflix.extension.loadAsyncImageResource
@@ -93,6 +95,21 @@ fun setImageFromDrawableBinding(imageView: ImageView, res : Int) {
     }
 }
 
+@BindingAdapter("profileSrc", "cornerRadius")
+fun setProfileImage(imageView: ImageView, url : String?, radius : Float) {
+    if(url.toString().contentEquals("null")) {
+        imageView.load(R.drawable.user_no_pic) {
+            crossfade(true)
+            transformations(RoundedCornersTransformation(radius))
+        }
+    } else {
+        imageView.load(url) {
+            crossfade(true)
+            transformations(RoundedCornersTransformation(radius))
+        }
+    }
+}
+
 @BindingAdapter("onEditorEnterAction")
 fun EditText.onEditorEnterAction(function: Function1<String, Unit>?) {
     if (function == null) setOnEditorActionListener(null)
@@ -109,9 +126,7 @@ fun setCustomToolbarTitle(textView : TextView, title : String) {
         color(ContextCompat.getColor(context, R.color.colorAccent)) {
             append(context.getString(R.string.app_name_first))
         }
-        color(Color.BLACK){
-            append(context.getString(R.string.app_name_second))
-        }
+        append(context.getString(R.string.app_name_second))
     }
     textView.text = spannedString
 }
@@ -127,3 +142,9 @@ fun setCustomToolbarTitle(carouselMovieItem: CarouselMovieItem, popularPromoMovi
     carouselMovieItem.ctitle.text = popularPromoMovie.title
     carouselMovieItem.crating.rating = popularPromoMovie.calculatePopularity()
 }
+
+@BindingAdapter("collapsingTitle")
+fun setCollapsingToolbarTitle(collapsingToolbar: CollapsingToolbarLayout, title : Int) {
+    collapsingToolbar.title = collapsingToolbar.context.resources.getString(title)
+}
+

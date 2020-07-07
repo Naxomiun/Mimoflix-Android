@@ -36,7 +36,7 @@
             tools:ignore="ContentDescription" />
 
         <TextView
-            style="@style/SearchActivity.Title"
+            style="@style/TitleStyle"
             android:layout_marginStart="@dimen/default_half_left_margin"
             app:layout_constraintBottom_toBottomOf="@id/iv_search_movie_poster"
             app:layout_constraintStart_toEndOf="@id/iv_search_movie_poster"

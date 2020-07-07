@@ -73,7 +73,7 @@
                 <ImageView
                     android:transitionName="prueba2"
                     android:id="@+id/iv_cast_profile"
-                    style="@style/ActorDetailActivity.ActorImage"
+                    style="@style/ActorImage"
                     binding:cornerRadius="@{@dimen/zero}"
                     binding:urlSrc="@{viewModel.actor.profilePic}"
                     android:scaleType="centerCrop"
@@ -90,7 +90,7 @@
                     android:textAlignment="center"
                     android:textSize="40sp"
                     android:text="@{viewModel.actor.name}"
-                    android:textColor="@color/black"
+                    android:textColor="?attr/textColorThemed"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="@id/iv_cast_profile"
@@ -98,14 +98,12 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
+                    style="@style/TitleStyle"
                     android:id="@+id/tv_known_for_title"
                     android:layout_marginStart="@dimen/default_right_margin"
                     android:layout_marginEnd="@dimen/default_left_margin"
-                    android:fontFamily="@font/gotham_bold"
                     android:layout_marginTop="@dimen/detail_margin_between_same_section"
-                    android:textSize="21sp"
                     android:text="@string/conocido_por"
-                    android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_cast_place_of_birth"
@@ -144,14 +142,12 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
+                    style="@style/TitleStyle"
                     android:id="@+id/tv_biography_title"
                     android:layout_marginStart="@dimen/default_right_margin"
                     android:layout_marginEnd="@dimen/default_left_margin"
-                    android:fontFamily="@font/gotham_bold"
                     android:layout_marginTop="@dimen/detail_margin_between_sections"
-                    android:textSize="21sp"
                     android:text="@string/biography_title"
-                    android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/rv_known_for"
@@ -159,15 +155,13 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
+                    style="@style/SubtitleStyle"
                     android:id="@+id/tv_biography"
                     android:layout_marginStart="@dimen/default_right_margin"
                     android:layout_marginEnd="@dimen/default_left_margin"
-                    android:fontFamily="@font/gotham_regular"
                     android:layout_marginTop="@dimen/detail_margin_between_same_section"
-                    android:textSize="16sp"
                     android:lineSpacingExtra="7dp"
                     android:text="@{viewModel.actor.biography}"
-                    android:textColor="@color/dark_gray"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_biography_title"

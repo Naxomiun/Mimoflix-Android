@@ -9,7 +9,8 @@
     </data>
 
     <com.google.android.material.chip.Chip
-        style="@style/SearchActivity.ChipStyle"
+        style="@style/ChipStyle"
+        app:chipBackgroundColor="?attr/colorCardThemed"
         android:layout_marginStart="1dp"
         android:onClick="@{() -> viewModel.onClick()}"
         android:layout_marginEnd="@dimen/default_half_right_margin"

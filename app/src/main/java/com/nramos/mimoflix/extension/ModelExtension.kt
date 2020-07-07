@@ -4,19 +4,31 @@ package com.nramos.mimoflix.extension
 import com.nramos.mimoflix.BR
 import com.nramos.mimoflix.R
 import com.nramos.mimoflix.binding.RecyclerDataBindingItem
-import com.nramos.mimoflix.model.ActorMovieViewModel
-import com.nramos.mimoflix.model.ActorViewModel
-import com.nramos.mimoflix.model.MovieDetail
+import com.nramos.mimoflix.model.*
 import com.nramos.mimoflix.model.company.LocalCompanyViewModel
 import com.nramos.mimoflix.model.localgenre.LocalGenreViewModel
 import com.nramos.mimoflix.model.movie.*
 import com.nramos.mimoflix.model.searchedterm.SearchedTermViewModel
 import com.nramos.mimoflix.model.moviedb.MovieDB
 import com.nramos.mimoflix.model.moviedb.MovieDBViewModel
+import com.nramos.mimoflix.model.recentcast.RecentCast
+import com.nramos.mimoflix.model.recentcast.RecentCastViewModel
+import com.nramos.mimoflix.model.recentmovie.RecentMovie
+import com.nramos.mimoflix.model.recentmovie.RecentMovieViewModel
 
 fun MovieDetail.mapToFavorite() = MovieDB(
     id = this.id ?: 0,
     title = this.title,
+    image = this.posterImage
+)
+
+fun ActorDetail.mapToRecent() = RecentCast(
+    id = this.id ?: 0,
+    image = this.profilePic
+)
+
+fun MovieDetail.mapToRecent() = RecentMovie(
+    id = this.id ?: 0,
     image = this.posterImage
 )
 
@@ -48,6 +60,12 @@ fun ActorViewModel.toBindingItem() = RecyclerDataBindingItem(
     item = this,
     variableId = BR.viewModel,
     layout = R.layout.item_cast_actor
+)
+
+fun ActorViewModel.toRecentBindingItem() = RecyclerDataBindingItem(
+    item = this,
+    variableId = BR.viewModel,
+    layout = R.layout.item_recent_cast
 )
 
 fun SearchedTermViewModel.toBindingItem() = RecyclerDataBindingItem(

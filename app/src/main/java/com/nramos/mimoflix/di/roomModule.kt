@@ -6,4 +6,5 @@ import org.koin.dsl.module
 val roomModule = module {
     single { AppRoomDataBase.getInstance(get()) }
     single { get<AppRoomDataBase>().getFavoriteDao() }
+    single { get<AppRoomDataBase>().getRecentDao()}
 }

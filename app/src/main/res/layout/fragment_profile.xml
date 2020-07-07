@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.nramos.mimoflix.ui.tabprofile.ProfileFragmentViewModel" />
+    </data>
+
+    <FrameLayout
+        android:animateLayoutChanges="true"
+        android:background="?attr/colorBackgroundThemed"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:paddingBottom="@dimen/bottom_nav_height_plus_margin"
+            android:visibility="@{viewModel.loggedIn ? View.GONE : View.VISIBLE}"
+            android:id="@+id/cl_login"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:alpha="0.5"
+                style="@style/ClickableImageView"
+                android:id="@+id/iv_settings_login"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_margin="@dimen/default_right_margin"
+                android:src="@drawable/ic_settings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/iv_login"
+                android:layout_margin="@dimen/default_left_margin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/iv_settings_login"
+                android:src="@drawable/login"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_marginTop="@dimen/detail_margin_between_same_section"
+                android:id="@+id/tv_profile_title"
+                android:text="¡Indentificate!"
+                android:textAlignment="center"
+                style="@style/TitleCollapsedStyle"
+                app:layout_constraintTop_toBottomOf="@id/iv_login"
+                app:layout_constraintStart_toStartOf="@id/iv_login"
+                app:layout_constraintEnd_toEndOf="@id/iv_login"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:textAlignment="center"
+                android:layout_marginTop="@dimen/detail_margin_between_same_section"
+                android:id="@+id/tv_profile_desc"
+                android:text="Logueate para acceder a tu información de manera sincronizada"
+                style="@style/SubtitleStyle"
+                app:layout_constraintTop_toBottomOf="@id/tv_profile_title"
+                app:layout_constraintStart_toStartOf="@id/iv_login"
+                app:layout_constraintEnd_toEndOf="@id/iv_login"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/TextAppearance.AppCompat.Button"
+                android:id="@+id/button_login"
+                android:textColor="@color/white"
+                android:text="Empezamos"
+                android:fontFamily="@font/gotham_black"
+                android:textSize="17sp"
+                app:cornerRadius="@dimen/movie_item_corner_radius"
+                app:layout_constraintTop_toBottomOf="@id/tv_profile_desc"
+                app:layout_constraintStart_toStartOf="@id/iv_login"
+                app:layout_constraintEnd_toEndOf="@id/iv_login"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.15"
+                android:paddingStart="@dimen/default_right_margin"
+                android:paddingEnd="@dimen/default_left_margin"
+                android:layout_width="wrap_content"
+                app:buttonSize="wide"
+                android:layout_height="wrap_content"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:overScrollMode="never"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/bottom_nav_height_plus_margin"
+            android:visibility="@{viewModel.loggedIn ? View.VISIBLE : View.GONE}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_profile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:alpha="0.5"
+                    style="@style/ClickableImageView"
+                    android:id="@+id/iv_settings_profile"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_margin="@dimen/default_right_margin"
+                    android:src="@drawable/ic_settings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:scaleType="centerCrop"
+                    android:padding="5dp"
+                    app:cornerRadius="@{@dimen/cast_round_corner}"
+                    app:profileSrc="@{viewModel.profileImage}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginStart="@dimen/default_left_margin"
+                    app:layout_constraintTop_toTopOf="@id/iv_settings_profile"
+                    android:id="@+id/iv_profile"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"/>
+
+                <TextView
+                    android:textSize="26sp"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/iv_profile"
+                    app:layout_constraintStart_toEndOf="@id/iv_profile"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_profile"
+                    android:layout_margin="@dimen/default_left_margin"
+                    style="@style/TitleStyle"
+                    android:text="@{viewModel.name}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <View
+                    android:id="@+id/separator"
+                    android:alpha="0.2"
+                    android:layout_margin="@dimen/default_left_margin"
+                    app:layout_constraintTop_toBottomOf="@id/iv_profile"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:background="@color/gray"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"/>
+
+                <TextView
+                    android:text="Películas"
+                    android:textAlignment="center"
+                    style="@style/TitleStyle"
+                    android:id="@+id/tv_recent_movies_data_title"
+                    android:layout_marginTop="@dimen/default_right_margin"
+                    android:layout_marginStart="@dimen/default_left_margin"
+                    android:layout_marginEnd="@dimen/default_left_margin"
+                    app:layout_constraintTop_toBottomOf="@id/separator"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/tv_recent_cast_data_title"
+                    android:orientation="horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text="Actores"
+                    android:textAlignment="center"
+                    style="@style/TitleStyle"
+                    android:id="@+id/tv_recent_cast_data_title"
+                    android:layout_marginTop="@dimen/default_right_margin"
+                    app:layout_constraintStart_toEndOf="@id/tv_recent_movies_data_title"
+                    app:layout_constraintTop_toBottomOf="@id/separator"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:orientation="horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text="@{viewModel.totalMovies.toString()}"
+                    android:textAlignment="center"
+                    style="@style/SubtitleStyle"
+                    android:id="@+id/tv_recent_movies_count"
+                    app:layout_constraintTop_toBottomOf="@id/tv_recent_movies_data_title"
+                    app:layout_constraintEnd_toStartOf="@id/tv_recent_cast_count"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:orientation="horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text="@{viewModel.totalCast.toString()}"
+                    android:textAlignment="center"
+                    style="@style/SubtitleStyle"
+                    android:id="@+id/tv_recent_cast_count"
+                    app:layout_constraintTop_toBottomOf="@id/tv_recent_cast_data_title"
+                    app:layout_constraintStart_toEndOf="@id/tv_recent_movies_count"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:orientation="horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_marginTop="@dimen/detail_margin_between_same_section"
+                    android:id="@+id/tv_recently_movies_title"
+                    style="@style/TitleStyle"
+                    android:text="Visto recientemente"
+                    android:textAlignment="center"
+                    android:layout_marginEnd="@dimen/default_right_margin"
+                    android:layout_marginStart="@dimen/default_left_margin"
+                    app:layout_constraintTop_toBottomOf="@id/tv_recent_movies_count"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    style="@style/CustomRecyclerStyle"
+                    app:items="@{viewModel.recentElements}"
+                    android:id="@+id/rv_recently_movies"
+                    android:paddingStart="@dimen/default_left_margin"
+                    android:paddingEnd="@dimen/default_right_margin"
+                    android:layout_marginTop="@dimen/detail_margin_between_same_section"
+                    android:nestedScrollingEnabled="false"
+                    app:layout_constraintTop_toBottomOf="@id/tv_recently_movies_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </FrameLayout>
+
+</layout>

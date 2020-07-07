@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <attr name="textColorThemed" format="reference"/>
+    <attr name="colorCardThemed" format="reference"/>
     <attr name="colorBackgroundThemed" format="reference"/>
 
     <declare-styleable name="CarouselMovieItem">

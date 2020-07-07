@@ -50,7 +50,7 @@
             <TextView
                 android:textSize="17sp"
                 android:fontFamily="@font/gotham_bold"
-                android:textColor="@color/black"
+                android:textColor="?attr/textColorThemed"
                 android:text="@{viewModel.movie.title}"
                 android:id="@+id/tv_search_movie_title"
                 android:layout_width="match_parent"
