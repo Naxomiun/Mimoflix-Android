@@ -9,6 +9,7 @@ import com.nramos.mimoflix.binding.RecyclerDataBindingItem
 import com.nramos.mimoflix.extension.toBindingItem
 import com.nramos.mimoflix.model.movie.Movie
 import com.nramos.mimoflix.model.movie.RoundedPosterViewModel
+import com.nramos.mimoflix.model.moviedb.MovieDB
 import com.nramos.mimoflix.model.moviedb.MovieDBViewModel
 import com.nramos.mimoflix.repo.movies.MovieRepository
 import com.nramos.mimoflix.utils.SingleEvent
@@ -34,11 +35,22 @@ class FavoriteActivityViewModel(
         viewModelScope.launch {
             _movies.value = withContext(Dispatchers.IO) {
                 movieRepository.getAllFavorites()?.map {
-                    MovieDBViewModel(it) { movie ->
-                        _movieActionEvent.value = SingleEvent(movie?.id ?: 0)
-                    }.toBindingItem()
+                    MovieDBViewModel(it,
+                        { movie-> _movieActionEvent.value = SingleEvent(movie?.id ?: 0)},
+                        { removeMovie ->
+                            removeMovie?.let {
+                                deleteFavorite(movie = removeMovie)
+                            }
+                        }).toBindingItem()
                 }
             }
+        }
+    }
+
+    private fun deleteFavorite(movie : MovieDB) {
+        viewModelScope.launch {
+            movieRepository.deleteFavorite(movie)
+            getFavoriteMovies()
         }
     }
 

@@ -4,23 +4,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="viewModel"
             type="com.nramos.mimoflix.ui.tabmovies.MoviesFragmentViewModel" />
     </data>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_popular_movies"
-        style="@style/CustomRecyclerStyle"
-        app:items="@{viewModel.topratedMovies}"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2"
-        android:layoutAnimation="@anim/list_animation"
-        android:paddingTop="@dimen/default_half_left_margin"
-        android:paddingEnd="@dimen/default_half_left_margin"
-        android:paddingStart="@dimen/default_half_right_margin"
-        android:paddingBottom="@dimen/bottom_nav_height_plus_margin"
+    <FrameLayout
+        android:animateLayoutChanges="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_popular_movies"
+            style="@style/CustomRecyclerStyle"
+            app:items="@{viewModel.topratedMovies}"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            android:layoutAnimation="@anim/list_animation"
+            android:paddingTop="@dimen/default_half_left_margin"
+            android:paddingEnd="@dimen/default_half_left_margin"
+            android:paddingStart="@dimen/default_half_right_margin"
+            android:paddingBottom="@dimen/bottom_nav_height_plus_margin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:visibility="@{viewModel.topratedMovies.size() == 0 ? View.VISIBLE : View.GONE}"
+            android:layout_gravity="center"
+            app:lottie_rawRes="@raw/loading"
+            app:lottie_autoPlay="true"
+            android:layout_marginBottom="@dimen/bottom_nav_height_plus_margin"
+            app:lottie_colorFilter="@color/colorAccent"
+            android:layout_width="@dimen/loading_size"
+            android:layout_height="@dimen/loading_size"/>
+
+    </FrameLayout>
 
 </layout>

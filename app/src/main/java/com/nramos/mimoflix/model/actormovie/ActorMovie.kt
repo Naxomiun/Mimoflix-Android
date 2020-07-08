@@ -1,10 +1,10 @@
-package com.nramos.mimoflix.model
+package com.nramos.mimoflix.model.actormovie
 
 import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
 @Keep
-data class Actor(
+data class ActorMovie(
     @SerializedName("id") val id : Int?,
-    @SerializedName("profile_path") val profileImage : String?
+    @SerializedName("poster_path") val posterImage : String?
 )

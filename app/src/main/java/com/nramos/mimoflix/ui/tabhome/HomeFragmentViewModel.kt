@@ -7,8 +7,8 @@ import androidx.lifecycle.viewModelScope
 import com.nramos.mimoflix.api.LocalProvider
 import com.nramos.mimoflix.binding.RecyclerDataBindingItem
 import com.nramos.mimoflix.extension.toBindingItem
-import com.nramos.mimoflix.model.company.LocalCompany
-import com.nramos.mimoflix.model.company.LocalCompanyViewModel
+import com.nramos.mimoflix.model.localcompany.LocalCompany
+import com.nramos.mimoflix.model.localcompany.LocalCompanyViewModel
 import com.nramos.mimoflix.model.localgenre.LocalGenre
 import com.nramos.mimoflix.model.localgenre.LocalGenreViewModel
 import com.nramos.mimoflix.model.movie.PopularPromoMovieViewModel

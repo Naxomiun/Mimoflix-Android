@@ -79,8 +79,7 @@
                 android:layout_marginStart="@dimen/default_right_margin"
                 app:layout_constraintTop_toTopOf="@id/iv_poster_movie"
                 app:layout_constraintStart_toStartOf="parent"
-                app:backgroundTint="?attr/colorBackgroundThemed"
-                android:tint="?attr/textColorThemed"
+                app:backgroundTint="@color/colorAccent"
                 android:src="@drawable/ic_back"
                 android:onClick="@{() -> viewModel.onBackEvent()}"
                 app:fabSize="mini"
@@ -97,8 +96,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_width="0dp"
-                android:layout_height="300dp"/>
+                android:layout_width="@dimen/zero"
+                android:layout_height="@dimen/movie_detail_backdrop"/>
 
             <Space
                 android:id="@+id/overlap_space_fab"
@@ -126,7 +125,7 @@
                 android:id="@+id/iv_poster_movie"
                 tools:src="@drawable/recommended_drive"
                 android:transitionName="prueba"
-                android:layout_width="180dp"
+                android:layout_width="@dimen/movie_detail_poster_width"
                 android:layout_height="0dp"
                 android:elevation="1dp"
                 android:scaleType="centerCrop"
@@ -164,7 +163,7 @@
                 style="@style/MovieTitleStyle"
                 android:textAlignment="center"
                 android:id="@+id/tv_movie_title"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/margin_20"
                 android:layout_marginStart="@dimen/default_left_margin"
                 android:layout_marginEnd="@dimen/default_right_margin"
                 app:layout_constraintStart_toStartOf="parent"
@@ -188,7 +187,7 @@
                 android:layout_height="wrap_content"/>
 
             <LinearLayout
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="@dimen/detail_margin_between_same_section"
                 android:id="@+id/ll_movie_specs"
                 android:layout_marginEnd="30dp"
                 android:layout_marginStart="30dp"

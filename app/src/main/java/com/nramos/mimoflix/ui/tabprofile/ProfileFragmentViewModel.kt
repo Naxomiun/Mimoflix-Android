@@ -8,11 +8,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.nramos.mimoflix.binding.RecyclerDataBindingItem
 import com.nramos.mimoflix.extension.toBindingItem
 import com.nramos.mimoflix.extension.toRecentBindingItem
-import com.nramos.mimoflix.model.Actor
-import com.nramos.mimoflix.model.ActorViewModel
+import com.nramos.mimoflix.model.actor.Actor
+import com.nramos.mimoflix.model.actor.ActorViewModel
 import com.nramos.mimoflix.model.movie.Movie
 import com.nramos.mimoflix.model.movie.RoundedPosterViewModel
 import com.nramos.mimoflix.persistance.RecentDao
+import com.nramos.mimoflix.utils.SingleEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -39,6 +40,18 @@ class ProfileFragmentViewModel(
     private val _totalCast = MutableLiveData<Int>()
     val totalCast: LiveData<Int> get() = _totalCast
 
+    private val _loginActionEvent = MutableLiveData<SingleEvent<Boolean>>()
+    val loginActionEvent: LiveData<SingleEvent<Boolean>> get() = _loginActionEvent
+
+    private val _settingsActionEvent = MutableLiveData<SingleEvent<Boolean>>()
+    val settingsActionEvent: LiveData<SingleEvent<Boolean>> get() = _settingsActionEvent
+
+    private val _movieActionEvent = MutableLiveData<SingleEvent<Int>>()
+    val movieActionEvent: LiveData<SingleEvent<Int>> get() = _movieActionEvent
+
+    private val _castActionEvent = MutableLiveData<SingleEvent<Int>>()
+    val castActionEvent: LiveData<SingleEvent<Int>> get() = _castActionEvent
+
     fun setData(account : GoogleSignInAccount?) {
         viewModelScope.launch {
             account?.let {
@@ -63,16 +76,35 @@ class ProfileFragmentViewModel(
             _recentElements.value = withContext(Dispatchers.IO) {
                 recentDao.getRecentMovies().map {
                     val movie = Movie(it.id, 0.0, it.image, "", 0.0,"","")
-                    RoundedPosterViewModel(movie) { movie, view ->
-
+                    RoundedPosterViewModel(movie) { movie, _ ->
+                        _movieActionEvent.value = SingleEvent(movie.id ?: 0)
                     }.toBindingItem()
                 } + recentDao.getRecentCast().map {
-                    val cast = Actor(it.id, it.image)
-                    ActorViewModel(cast) { cast, view ->
-
+                    val cast =
+                        Actor(it.id, it.image)
+                    ActorViewModel(cast) { cast, _ ->
+                        _castActionEvent.value = SingleEvent(cast?.id ?: 0)
                     }.toRecentBindingItem()
                 }
             }
+        }
+    }
+
+    fun settingsEvent() {
+        viewModelScope.launch {
+            _settingsActionEvent.value = SingleEvent(true)
+        }
+    }
+
+    fun loginEvent() {
+        viewModelScope.launch {
+            _loginActionEvent.value = SingleEvent(true)
+        }
+    }
+
+    fun logOut() {
+        viewModelScope.launch {
+            _loggedIn.value = false
         }
     }
 

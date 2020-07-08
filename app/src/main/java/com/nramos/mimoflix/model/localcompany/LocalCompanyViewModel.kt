@@ -1,4 +1,4 @@
-package com.nramos.mimoflix.model.company
+package com.nramos.mimoflix.model.localcompany
 
 class LocalCompanyViewModel (
     val localCompany: LocalCompany,

@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="viewModel"
             type="com.nramos.mimoflix.ui.genrelist.MoviesGenreActivityViewModel" />
@@ -44,19 +45,36 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:background="?attr/colorBackgroundThemed"
-            style="@style/CustomRecyclerStyle"
-            app:spanCount="2"
-            app:items="@{viewModel.movies}"
-            android:paddingTop="@dimen/detail_margin_between_same_section"
-            android:layoutAnimation="@anim/list_animation"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-            android:paddingStart="@dimen/default_half_left_margin"
-            android:paddingEnd="@dimen/default_half_right_margin"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:id="@+id/ptr_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:background="?attr/colorBackgroundThemed"
+                style="@style/CustomRecyclerStyle"
+                app:spanCount="2"
+                app:items="@{viewModel.movies}"
+                android:paddingTop="@dimen/detail_margin_between_same_section"
+                android:layoutAnimation="@anim/list_animation"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                android:paddingStart="@dimen/default_half_left_margin"
+                android:paddingEnd="@dimen/default_half_right_margin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:visibility="@{viewModel.movies.size() == 0 ? View.VISIBLE : View.GONE}"
+            android:layout_gravity="center"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_colorFilter="@color/colorAccent"
+            app:lottie_rawRes="@raw/loading"
+            android:layout_width="@dimen/loading_size"
+            android:layout_height="@dimen/loading_size"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

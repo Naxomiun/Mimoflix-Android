@@ -1,6 +1,6 @@
 package com.nramos.mimoflix.di
 
-import com.nramos.mimoflix.model.company.LocalCompany
+import com.nramos.mimoflix.model.localcompany.LocalCompany
 import com.nramos.mimoflix.model.localgenre.LocalGenre
 import com.nramos.mimoflix.ui.actordetail.ActorDetailActivity
 import com.nramos.mimoflix.ui.actordetail.ActorDetailActivityViewModel

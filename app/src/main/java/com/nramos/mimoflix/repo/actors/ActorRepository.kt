@@ -2,8 +2,7 @@ package com.nramos.mimoflix.repo.actors
 
 import com.nramos.mimoflix.api.ApiService
 import com.nramos.mimoflix.model.ActorDetail
-import com.nramos.mimoflix.model.ActorMovie
-import com.nramos.mimoflix.model.movie.Movie
+import com.nramos.mimoflix.model.actormovie.ActorMovie
 
 class ActorRepository(
     private val apiService: ApiService

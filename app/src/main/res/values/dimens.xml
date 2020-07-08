@@ -37,4 +37,29 @@
     <dimen name="viewpager_item_margin">20dp</dimen>
 
     <dimen name="zero">0dp</dimen>
+    <dimen name="actor_title_max_size">23sp</dimen>
+    <dimen name="actor_title_min_size">13sp</dimen>
+    <dimen name="fake_toolbar">75dp</dimen>
+    <dimen name="movie_detail_backdrop">300dp</dimen>
+    <dimen name="movie_detail_poster_width">180dp</dimen>
+    <dimen name="margin_20">20dp</dimen>
+    <dimen name="loading_size">70dp</dimen>
+    <dimen name="search_input_elevation">26dp</dimen>
+    <dimen name="carousel_item_width">210dp</dimen>
+    <dimen name="carousel_item_height">270dp</dimen>
+    <dimen name="max_carousel_size_title">33sp</dimen>
+    <dimen name="min_carousel_size_title">20sp</dimen>
+    <dimen name="company_item_size">80dp</dimen>
+    <dimen name="favorite_item_width">75dp</dimen>
+    <dimen name="favorite_item_height">105dp</dimen>
+    <dimen name="genre_item_width">250dp</dimen>
+    <dimen name="genre_item_height">125dp</dimen>
+    <dimen name="genre_item_title_max_size">32sp</dimen>
+    <dimen name="genre_item_title_min_size">25sp</dimen>
+    <dimen name="rounded_movie_poster_width">140dp</dimen>
+    <dimen name="search_item_image_width">75dp</dimen>
+    <dimen name="search_item_image_height">105dp</dimen>
+    <dimen name="search_item_title_size">17sp</dimen>
+    <dimen name="search_item_detail_size">16sp</dimen>
+    <dimen name="search_item_overview_size">15sp</dimen>
 </resources>

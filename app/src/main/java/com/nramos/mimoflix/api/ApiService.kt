@@ -23,7 +23,7 @@ interface ApiService {
     @GET("search/movie?api_key=7ea20134f2a81fb24515d4af532cfe46&language=es-ES&page=1&include_adult=false")
     suspend fun searchMovies(@Query("query") query: String) : Response<MovieApiResponse>
 
-    @GET("movie/popular?api_key=7ea20134f2a81fb24515d4af532cfe46&sort_by=popularity.desc&include_adult=false&include_video=false©&page=1")
+    @GET("movie/popular?api_key=7ea20134f2a81fb24515d4af532cfe46&sort_by=popularity.desc&include_adult=false&include_video=false&language=es-ES&page=1")
     suspend fun getMoviesPerCompany(@Query("with_companies") id: Int) : Response<MovieApiResponse>
 
     @GET("trending/movie/day?api_key=7ea20134f2a81fb24515d4af532cfe46&language=es-ES&include_adult=false")

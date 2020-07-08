@@ -34,6 +34,7 @@ class MoviesGenreActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         setEvents()
+        setSwipe()
     }
 
     private fun setEvents() {
@@ -46,6 +47,15 @@ class MoviesGenreActivity : AppCompatActivity() {
                     startActivity(intent, options.toBundle())
                 }
             }
+            observe(movies){
+                binding.ptrLayout.isRefreshing = false
+            }
+        }
+    }
+
+    private fun setSwipe() {
+        binding.ptrLayout.setOnRefreshListener {
+            viewModel.getMoviesByGenre()
         }
     }
 

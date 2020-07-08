@@ -76,11 +76,11 @@ class SearchActivity : AppCompatActivity() {
         val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
-        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Need to speak")
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, resources.getString(R.string.search_speech_title))
         try {
             startActivityForResult(intent, RC_SPEECH)
         } catch (a: ActivityNotFoundException) {
-            Toast.makeText(applicationContext, "Sorry your device not supported", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, resources.getString(R.string.search_speech_not_supported), Toast.LENGTH_SHORT).show()
         }
     }
 

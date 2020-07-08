@@ -1,6 +1,7 @@
-package com.nramos.mimoflix.model
+package com.nramos.mimoflix.model.actor
 
 import android.view.View
+import com.nramos.mimoflix.model.actor.Actor
 
 class ActorViewModel(
     val actor : Actor,

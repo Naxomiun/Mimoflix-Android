@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nramos.mimoflix.binding.RecyclerDataBindingItem
 import com.nramos.mimoflix.extension.toBindingItem
-import com.nramos.mimoflix.model.MovieDetail
 import com.nramos.mimoflix.model.localgenre.LocalGenre
 import com.nramos.mimoflix.model.movie.Movie
 import com.nramos.mimoflix.model.movie.RoundedPosterViewModel
@@ -32,7 +31,7 @@ class MoviesGenreActivityViewModel(
         getMoviesByGenre()
     }
 
-    private fun getMoviesByGenre() {
+    fun getMoviesByGenre() {
         viewModelScope.launch {
             _movies.value = withContext(Dispatchers.IO) {
                 movieRepository.getMoviesPerGenre(genre.id).map {

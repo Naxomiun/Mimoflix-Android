@@ -43,6 +43,7 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.core.widget.NestedScrollView
+            android:paddingTop="@dimen/default_half_left_margin"
             android:paddingBottom="@dimen/bottom_nav_height_plus_margin"
             android:animateLayoutChanges="true"
             android:id="@+id/viewpager_movies"

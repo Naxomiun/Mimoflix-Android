@@ -6,13 +6,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.CompoundButton;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.nramos.mimoflix.R;
 import com.nramos.mimoflix.databinding.ActivitySettingsBinding;
 import com.nramos.mimoflix.utils.StyleManager;
 
 import java.util.Objects;
+
+import static com.nramos.mimoflix.utils.Constants.RESULT_LOGOUT;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -43,25 +51,25 @@ public class SettingsActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Log.e("SETTINGS", "BACK PRESSED");
-        if(styleManager.shouldRecreate()) {
+        if(styleManager.shouldRecreate())
             setResult(RESULT_OK);
-            Log.e("SETTINGS", "OK");
-        }
-        else {
+        else
             setResult(RESULT_CANCELED);
-            Log.e("SETTINGS", "CANCELED");
-        }
         super.onBackPressed();
     }
 
     private void checkMode() {
+        binding.tvLogout.setVisibility(GoogleSignIn.getLastSignedInAccount(this) != null ? View.VISIBLE : View.GONE);
         binding.swNightMode.setChecked(styleManager.getMode());
         binding.swNightMode.setOnCheckedChangeListener((buttonView, isChecked) -> {
             styleManager.saveMode(isChecked);
             styleManager.recreate(true);
             this.recreate();
         });
+        binding.tvLogout.setOnClickListener(view -> {
+            logOut();
+        });
+
     }
 
     private void setMode() {
@@ -71,6 +79,17 @@ public class SettingsActivity extends AppCompatActivity {
         } else {
             setTheme(R.style.Mimoflix_Light);
         }
+    }
+
+    private void logOut() {
+        GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(this, new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().requestProfile().build());
+        mGoogleSignInClient.signOut().addOnCompleteListener(this, new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                setResult(RESULT_LOGOUT);
+                SettingsActivity.this.finish();
+            }
+        });
     }
 
 }

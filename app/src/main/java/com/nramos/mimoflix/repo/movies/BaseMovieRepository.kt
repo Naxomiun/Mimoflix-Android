@@ -3,6 +3,7 @@ package com.nramos.mimoflix.repo.movies
 import android.util.Log
 import com.nramos.mimoflix.extension.safeSubList
 import com.nramos.mimoflix.model.*
+import com.nramos.mimoflix.model.actor.Actor
 import com.nramos.mimoflix.model.movie.Movie
 import com.nramos.mimoflix.model.moviedb.MovieDB
 import retrofit2.Response

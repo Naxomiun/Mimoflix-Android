@@ -24,7 +24,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:alpha="0.5"
+                android:onClick="@{() -> viewModel.settingsEvent()}"
                 style="@style/ClickableImageView"
                 android:id="@+id/iv_settings_login"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +36,8 @@
 
             <ImageView
                 android:id="@+id/iv_login"
-                android:layout_margin="@dimen/default_left_margin"
+                android:padding="25dp"
+                android:layout_margin="@dimen/detail_margin_between_sections"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/iv_settings_login"
@@ -47,7 +48,7 @@
             <TextView
                 android:layout_marginTop="@dimen/detail_margin_between_same_section"
                 android:id="@+id/tv_profile_title"
-                android:text="¡Indentificate!"
+                android:text="@string/login_title"
                 android:textAlignment="center"
                 style="@style/TitleCollapsedStyle"
                 app:layout_constraintTop_toBottomOf="@id/iv_login"
@@ -60,7 +61,7 @@
                 android:textAlignment="center"
                 android:layout_marginTop="@dimen/detail_margin_between_same_section"
                 android:id="@+id/tv_profile_desc"
-                android:text="Logueate para acceder a tu información de manera sincronizada"
+                android:text="@string/login_desc"
                 style="@style/SubtitleStyle"
                 app:layout_constraintTop_toBottomOf="@id/tv_profile_title"
                 app:layout_constraintStart_toStartOf="@id/iv_login"
@@ -71,8 +72,10 @@
             <com.google.android.material.button.MaterialButton
                 style="@style/TextAppearance.AppCompat.Button"
                 android:id="@+id/button_login"
-                android:textColor="@color/white"
-                android:text="Empezamos"
+                android:onClick="@{() -> viewModel.loginEvent()}"
+                android:textColor="?attr/textColorThemed"
+                android:padding="5dp"
+                android:text="@string/login_button"
                 android:fontFamily="@font/gotham_black"
                 android:textSize="17sp"
                 app:cornerRadius="@dimen/movie_item_corner_radius"
@@ -103,7 +106,7 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:alpha="0.5"
+                    android:onClick="@{() -> viewModel.settingsEvent()}"
                     style="@style/ClickableImageView"
                     android:id="@+id/iv_settings_profile"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -151,7 +154,7 @@
                     android:layout_height="2dp"/>
 
                 <TextView
-                    android:text="Películas"
+                    android:text="@string/profile_movies"
                     android:textAlignment="center"
                     style="@style/TitleStyle"
                     android:id="@+id/tv_recent_movies_data_title"
@@ -166,7 +169,7 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
-                    android:text="Actores"
+                    android:text="@string/profile_cast"
                     android:textAlignment="center"
                     style="@style/TitleStyle"
                     android:id="@+id/tv_recent_cast_data_title"
@@ -179,9 +182,8 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
+                    style="@style/SpecsStyle"
                     android:text="@{viewModel.totalMovies.toString()}"
-                    android:textAlignment="center"
-                    style="@style/SubtitleStyle"
                     android:id="@+id/tv_recent_movies_count"
                     app:layout_constraintTop_toBottomOf="@id/tv_recent_movies_data_title"
                     app:layout_constraintEnd_toStartOf="@id/tv_recent_cast_count"
@@ -191,9 +193,8 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
+                    style="@style/SpecsStyle"
                     android:text="@{viewModel.totalCast.toString()}"
-                    android:textAlignment="center"
-                    style="@style/SubtitleStyle"
                     android:id="@+id/tv_recent_cast_count"
                     app:layout_constraintTop_toBottomOf="@id/tv_recent_cast_data_title"
                     app:layout_constraintStart_toEndOf="@id/tv_recent_movies_count"
@@ -206,7 +207,7 @@
                     android:layout_marginTop="@dimen/detail_margin_between_same_section"
                     android:id="@+id/tv_recently_movies_title"
                     style="@style/TitleStyle"
-                    android:text="Visto recientemente"
+                    android:text="@string/profile_recent"
                     android:textAlignment="center"
                     android:layout_marginEnd="@dimen/default_right_margin"
                     android:layout_marginStart="@dimen/default_left_margin"

@@ -1,6 +1,5 @@
 package com.nramos.mimoflix.ui.moviedetail
 
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -12,11 +11,11 @@ import com.nramos.mimoflix.extension.mapToFavorite
 import com.nramos.mimoflix.extension.mapToRecent
 import com.nramos.mimoflix.extension.toBindingItem
 import com.nramos.mimoflix.model.*
+import com.nramos.mimoflix.model.actor.ActorViewModel
 import com.nramos.mimoflix.model.movie.RelatedMovieViewModel
 import com.nramos.mimoflix.persistance.RecentDao
 import com.nramos.mimoflix.repo.movies.MovieRepository
 import com.nramos.mimoflix.utils.SingleEvent
-import com.nramos.mimoflix.utils.SingleLiveEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -42,7 +41,8 @@ class MovieDetailActivityViewModel(
     private val _actors = MutableLiveData<List<RecyclerDataBindingItem>>()
     val actors : LiveData<List<RecyclerDataBindingItem>> get() = _actors
 
-    val backAction: SingleLiveEvent<Boolean> = SingleLiveEvent()
+    private val _backAction = MutableLiveData<SingleEvent<Boolean>>()
+    val backAction : LiveData<SingleEvent<Boolean>> get() = _backAction
 
     private val _actorDetailAction = MutableLiveData<SingleEvent<Pair<Int, View>>>()
     val actorDetailAction : LiveData<SingleEvent<Pair<Int, View>>> get() = _actorDetailAction
@@ -52,6 +52,12 @@ class MovieDetailActivityViewModel(
 
     private val _bookmarkAction = MutableLiveData<SingleEvent<Boolean>>()
     val bookmarkAction : LiveData<SingleEvent<Boolean>> get() = _bookmarkAction
+
+    private val _relatedMovieAction = MutableLiveData<SingleEvent<Int>>()
+    val relatedMovieAction : LiveData<SingleEvent<Int>> get() = _relatedMovieAction
+
+    private val _noPremiumAction = MutableLiveData<SingleEvent<Boolean>>()
+    val noPremiumAction : LiveData<SingleEvent<Boolean>> get() = _noPremiumAction
 
     init {
         getMovieDetail()
@@ -90,8 +96,8 @@ class MovieDetailActivityViewModel(
         viewModelScope.launch {
             _relatedMovies.value = withContext(Dispatchers.IO) {
                 movieRepository.getRelatedMovies(movieId)?.map {
-                    RelatedMovieViewModel(it) { movie, view ->
-
+                    RelatedMovieViewModel(it) { movie, _ ->
+                        _relatedMovieAction.value = SingleEvent(movie.id ?: 0)
                     }.toBindingItem()
                 }
             }
@@ -99,12 +105,16 @@ class MovieDetailActivityViewModel(
     }
 
     fun onBackEvent() {
-        backAction.value = true
+        viewModelScope.launch {
+            _backAction.value = SingleEvent(true)
+        }
     }
 
     fun onPlayTrailerEvent() {
-        _trailer.value?.let {
-            _trailerAction.value = SingleEvent(it)
+        viewModelScope.launch {
+            _trailer.value?.let {
+                _trailerAction.value = SingleEvent(it)
+            }
         }
     }
 
@@ -127,6 +137,10 @@ class MovieDetailActivityViewModel(
                 _bookmarkAction.value = withContext(Dispatchers.IO) {
                     SingleEvent(movieRepository.checkForId(movieId) ?: false)
                 }
+            }
+        } else {
+            viewModelScope.launch {
+                _noPremiumAction.value = SingleEvent(true)
             }
         }
     }

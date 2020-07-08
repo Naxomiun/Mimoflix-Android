@@ -41,7 +41,7 @@
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:background="@drawable/rounded_search_input"
-            android:elevation="26dp"
+            android:elevation="@dimen/search_input_elevation"
             app:layout_constraintEnd_toStartOf="@id/iv_speech"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_search_back_button"
@@ -63,7 +63,7 @@
                 android:onTextChanged="@{viewModel.onSearchEvent}"
                 android:layout_marginStart="@dimen/default_half_right_margin"
                 android:layout_marginEnd="@dimen/default_half_left_margin"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 tools:ignore="LabelFor"
                 android:importantForAutofill="no" />
@@ -86,7 +86,7 @@
 
         <androidx.core.widget.NestedScrollView
             android:overScrollMode="never"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/detail_margin_between_same_section"
             android:clipToPadding="false"
             app:layout_constraintTop_toBottomOf="@id/ll_search_input"
             app:layout_constraintStart_toStartOf="parent"

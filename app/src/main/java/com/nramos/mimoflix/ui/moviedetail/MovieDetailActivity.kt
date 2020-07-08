@@ -1,15 +1,13 @@
 package com.nramos.mimoflix.ui.moviedetail
 
-import android.Manifest
+
 import android.app.ActivityOptions
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.widget.NestedScrollView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.nramos.mimoflix.R
 import com.nramos.mimoflix.databinding.ActivityDetailBinding
 import com.nramos.mimoflix.extension.goTo
@@ -77,8 +75,22 @@ class MovieDetailActivity : AppCompatActivity() {
                 }
             }
             observe(backAction) {
-                if(it) {
-                    onBackPressed()
+                it.getContentIfNotHandled()?.let { back ->
+                    if (back) {
+                        onBackPressed()
+                    }
+                }
+            }
+            observe(relatedMovieAction) {
+                it.getContentIfNotHandled()?.let { movieId ->
+                    goTo<MovieDetailActivity>(Pair("movie", movieId))
+                }
+            }
+            observe(noPremiumAction) {
+                it.getContentIfNotHandled()?.let { event ->
+                    if (event) {
+                        showDialog()
+                    }
                 }
             }
             observe(movie){
@@ -104,6 +116,13 @@ class MovieDetailActivity : AppCompatActivity() {
             true -> setTheme(R.style.DetailActivity_Dark)
             false -> setTheme(R.style.DetailActivity_Light)
         }
+    }
+
+    private fun showDialog() {
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.premium_title)
+            .setMessage(R.string.premium_message)
+            .show()
     }
 
 }

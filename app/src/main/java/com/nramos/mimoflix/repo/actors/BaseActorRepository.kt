@@ -2,9 +2,8 @@ package com.nramos.mimoflix.repo.actors
 
 import android.util.Log
 import com.nramos.mimoflix.model.ActorDetail
-import com.nramos.mimoflix.model.ActorMovie
+import com.nramos.mimoflix.model.actormovie.ActorMovie
 import com.nramos.mimoflix.model.ActorMovies
-import com.nramos.mimoflix.model.movie.Movie
 import retrofit2.Response
 
 open class BaseActorRepository {

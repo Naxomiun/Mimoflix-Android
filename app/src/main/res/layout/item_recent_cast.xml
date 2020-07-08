@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.nramos.mimoflix.model.ActorViewModel" />
+            type="com.nramos.mimoflix.model.actor.ActorViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

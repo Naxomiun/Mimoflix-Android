@@ -1,20 +1,19 @@
 package com.nramos.mimoflix.extension
 
-
 import com.nramos.mimoflix.BR
 import com.nramos.mimoflix.R
 import com.nramos.mimoflix.binding.RecyclerDataBindingItem
 import com.nramos.mimoflix.model.*
-import com.nramos.mimoflix.model.company.LocalCompanyViewModel
+import com.nramos.mimoflix.model.actor.ActorViewModel
+import com.nramos.mimoflix.model.actormovie.ActorMovieViewModel
+import com.nramos.mimoflix.model.localcompany.LocalCompanyViewModel
 import com.nramos.mimoflix.model.localgenre.LocalGenreViewModel
 import com.nramos.mimoflix.model.movie.*
 import com.nramos.mimoflix.model.searchedterm.SearchedTermViewModel
 import com.nramos.mimoflix.model.moviedb.MovieDB
 import com.nramos.mimoflix.model.moviedb.MovieDBViewModel
 import com.nramos.mimoflix.model.recentcast.RecentCast
-import com.nramos.mimoflix.model.recentcast.RecentCastViewModel
 import com.nramos.mimoflix.model.recentmovie.RecentMovie
-import com.nramos.mimoflix.model.recentmovie.RecentMovieViewModel
 
 fun MovieDetail.mapToFavorite() = MovieDB(
     id = this.id ?: 0,

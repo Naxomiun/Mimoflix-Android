@@ -3,8 +3,10 @@
     <string name="app_name_second">flix</string>
     <string name="app_name">Mimoflix</string>
 
-    <!-- Fragment Genres -->
-    <string name="fragment_genres_recomendados">Recomendados</string>
+    <string name="tab_home">Inicio</string>
+    <string name="tab_discover">Descubre</string>
+    <string name="tab_profile">Perfil</string>
+
 
     <!-- Fragment movies -->
     <string name="fragment_movies_now_playing">Ahora en cines</string>
@@ -13,24 +15,29 @@
     <string name="fragment_movies_upcoming">Próximamente</string>
 
     <!-- Miscelaneous -->
+    <string name="empty_favorites">Parece que aun no has añadido ningún favorito</string>
     <string name="poster_content_description">Imagen promocional del contenido</string>
     <string name="string_peliculas">Películas</string>
     <string name="title_discover">Descubre</string>
 
     <!-- Search -->
+    <string name="search_speech_not_supported">Tu dispositivo no es compatible</string>
+    <string name="search_speech_title">Puedes empezar a hablar</string>
     <string name="search_find_movies">Buscar películas...</string>
     <string name="search_last_searched">Buscado recientemente</string>
     <string name="search_most_searched">Más buscado</string>
     <string name="search_results_for">Resultados para: %1$s</string>
 
     <!-- Movie detail -->
+    <string name="premium_title">Ops!</string>
+    <string name="premium_message">Para acceder a esta funcionalidad compre la versión Premium</string>
     <string name="detail_synosis_title">Sinópsis</string>
     <string name="detail_cast_title">Reparto</string>
     <string name="detail_play_trailer">Reproducir trailer</string>
     <string name="detail_play_trailer_not_available">Trailer no disponible</string>
     <string name="detail_related_movies">Películas relacionadas</string>
     <string name="detail_no_genres"> - </string>
-    <string name="detail_added_to_favorites">Se ha añadido \'%1$s\' a tus favoritos</string>
+    <string name="detail_added_to_favorites">\'%1$s\' añadido a tus favoritos</string>
 
     <!-- Genres names -->
     <string name="action">Acción</string>
@@ -50,6 +57,17 @@
     <string name="favorites_title">Favorites</string>
 
     <!-- Fragment profile -->
+    <string name="login_title">¡Indentificate!</string>
+    <string name="login_desc">Logueate para acceder a tu información de manera sincronizada</string>
+    <string name="login_button">Empezamos</string>
     <string name="profile_gservices_error">Ha ocurrido un error con los servicios de Google</string>
+    <string name="profile_movies">Películas</string>
+    <string name="profile_cast">Actores</string>
+    <string name="profile_recent">Visto recientemente</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Ajustes</string>
+    <string name="settings_night_mode">Modo oscuro</string>
+    <string name="settings_log_out">Cerrar sesión</string>
 
 </resources>

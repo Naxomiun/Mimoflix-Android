@@ -1,12 +1,10 @@
 package com.nramos.mimoflix.ui.tabprofile
 
 import android.app.Activity
-import android.app.Activity.RESULT_CANCELED
 import android.app.Activity.RESULT_OK
+import android.app.ActivityOptions
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -22,9 +20,13 @@ import com.google.android.gms.tasks.Task
 import com.nramos.mimoflix.R
 import com.nramos.mimoflix.databinding.FragmentProfileBinding
 import com.nramos.mimoflix.extension.goTo
+import com.nramos.mimoflix.extension.observe
+import com.nramos.mimoflix.ui.actordetail.ActorDetailActivity
+import com.nramos.mimoflix.ui.moviedetail.MovieDetailActivity
 import com.nramos.mimoflix.ui.settings.SettingsActivity
+import com.nramos.mimoflix.ui.trailer.TrailerActivity
+import com.nramos.mimoflix.utils.Constants.Companion.RESULT_LOGOUT
 import com.nramos.mimoflix.utils.StyleManager
-import kotlinx.android.synthetic.main.fragment_profile.*
 import org.koin.androidx.scope.lifecycleScope
 import org.koin.androidx.viewmodel.scope.viewModel
 
@@ -41,6 +43,7 @@ class ProfileFragment : Fragment() {
         return FragmentProfileBinding.inflate(inflater, container, false).also {
             it.viewModel = viewModel
             it.lifecycleOwner = viewLifecycleOwner
+            setEvents()
             mGoogleSignInClient = GoogleSignIn.getClient(
                 context as Activity,
                 GoogleSignInOptions.Builder(
@@ -60,22 +63,34 @@ class ProfileFragment : Fragment() {
         if(isLoggedIn != null) {
             updateUI(isLoggedIn)
         }
-
-        button_login.setOnClickListener {
-            login()
-        }
-
-        iv_settings_login.setOnClickListener {
-            startActivityForResult(Intent(context, SettingsActivity::class.java), RC_SETTINGS)
-        }
-        iv_settings_profile.setOnClickListener {
-            startActivityForResult(Intent(context, SettingsActivity::class.java), RC_SETTINGS)
-        }
     }
 
     private fun setEvents() {
         with(viewModel) {
-
+            observe(loginActionEvent) {
+                it.getContentIfNotHandled()?.let {event ->
+                    if (event) {
+                        login()
+                    }
+                }
+            }
+            observe(settingsActionEvent) {
+                it.getContentIfNotHandled()?.let { event ->
+                    if (event) {
+                        startActivityForResult(Intent(context, SettingsActivity::class.java), RC_SETTINGS)
+                    }
+                }
+            }
+            observe(movieActionEvent) {
+                it.getContentIfNotHandled()?.let { movieId ->
+                    context?.goTo<MovieDetailActivity>(Pair("movie", movieId))
+                }
+            }
+            observe(castActionEvent) {
+                it.getContentIfNotHandled()?.let { castId ->
+                    context?.goTo<ActorDetailActivity>(Pair("actorId", castId))
+                }
+            }
         }
     }
 
@@ -95,7 +110,6 @@ class ProfileFragment : Fragment() {
     }
 
     private fun updateUI(account : GoogleSignInAccount?) {
-        Log.e("PHOTO", account?.photoUrl.toString())
         viewModel.setData(account)
     }
 
@@ -114,10 +128,11 @@ class ProfileFragment : Fragment() {
                         StyleManager(requireContext()).recreate(false)
                         activity?.recreate()
                     }
-                    RESULT_CANCELED -> { Log.e("RESULT", "CANCELED")}
+                    RESULT_LOGOUT -> {
+                        viewModel.logOut()
+                    }
                 }
             }
         }
     }
-
 }

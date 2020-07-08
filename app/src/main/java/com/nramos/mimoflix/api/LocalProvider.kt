@@ -1,9 +1,9 @@
 package com.nramos.mimoflix.api
 
 import com.nramos.mimoflix.R
-import com.nramos.mimoflix.model.company.LocalCompany
-import com.nramos.mimoflix.model.localgenre.LocalGenre
 import com.nramos.mimoflix.model.PopularPromoMovie
+import com.nramos.mimoflix.model.localcompany.LocalCompany
+import com.nramos.mimoflix.model.localgenre.LocalGenre
 
 class LocalProvider {
 

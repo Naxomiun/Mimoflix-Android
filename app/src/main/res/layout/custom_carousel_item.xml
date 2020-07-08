@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="230dp">
+            android:layout_width="@dimen/carousel_item_width"
+            android:layout_height="@dimen/carousel_item_height">
 
             <ImageView
                 app:layout_constraintTop_toTopOf="parent"
@@ -25,14 +25,9 @@
                 app:layout_constraintBottom_toTopOf="@id/rb_movie"
                 android:singleLine="true"
                 android:gravity="bottom"
-                android:maxLines="2"
-                app:minTextSize="25sp"
-                android:shadowColor="@color/black"
-                android:shadowDx="1"
-                android:shadowDy="1"
-                android:shadowRadius="2"
+                app:minTextSize="@dimen/min_carousel_size_title"
                 android:fontFamily="@font/proxima_nova_bold"
-                android:textSize="40sp"
+                android:textSize="@dimen/max_carousel_size_title"
                 android:textAllCaps="true"
                 tools:text="DRIVE"
                 android:id="@+id/tv_title"

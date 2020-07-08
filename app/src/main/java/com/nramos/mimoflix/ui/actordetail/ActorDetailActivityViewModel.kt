@@ -1,6 +1,5 @@
 package com.nramos.mimoflix.ui.actordetail
 
-import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,10 +8,7 @@ import com.nramos.mimoflix.binding.RecyclerDataBindingItem
 import com.nramos.mimoflix.extension.mapToRecent
 import com.nramos.mimoflix.extension.toBindingItem
 import com.nramos.mimoflix.model.ActorDetail
-import com.nramos.mimoflix.model.ActorMovie
-import com.nramos.mimoflix.model.ActorMovieViewModel
-import com.nramos.mimoflix.model.movie.Movie
-import com.nramos.mimoflix.model.movie.RoundedPosterViewModel
+import com.nramos.mimoflix.model.actormovie.ActorMovieViewModel
 import com.nramos.mimoflix.persistance.RecentDao
 import com.nramos.mimoflix.repo.actors.ActorRepository
 import com.nramos.mimoflix.utils.SingleEvent

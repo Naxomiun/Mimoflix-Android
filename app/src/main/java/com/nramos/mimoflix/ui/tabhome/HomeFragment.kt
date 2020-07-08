@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.nramos.mimoflix.databinding.FragmentHomeBinding
 import com.nramos.mimoflix.extension.goTo
 import com.nramos.mimoflix.extension.observe
+import com.nramos.mimoflix.model.localgenre.LocalGenre
 import com.nramos.mimoflix.ui.companylist.MoviesCompanyActivity
 import com.nramos.mimoflix.ui.genrelist.MoviesGenreActivity
 import com.nramos.mimoflix.ui.moviedetail.MovieDetailActivity

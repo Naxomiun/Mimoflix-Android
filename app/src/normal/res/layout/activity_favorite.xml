@@ -44,14 +44,29 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <TextView
-            android:text="Para acceder a esta funcionalidad compre la versión Premium"
-            style="@style/TitleStyle"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+        <LinearLayout
+            android:layout_marginStart="@dimen/bottom_nav_height"
+            android:layout_marginEnd="@dimen/bottom_nav_height"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/premium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_marginTop="@dimen/detail_margin_between_same_section"
+                android:text="@string/premium_message"
+                style="@style/TitleStyle"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

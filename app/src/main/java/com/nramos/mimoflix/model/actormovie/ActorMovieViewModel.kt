@@ -1,4 +1,6 @@
-package com.nramos.mimoflix.model
+package com.nramos.mimoflix.model.actormovie
+
+import com.nramos.mimoflix.model.actormovie.ActorMovie
 
 class ActorMovieViewModel (
     val movie : ActorMovie,

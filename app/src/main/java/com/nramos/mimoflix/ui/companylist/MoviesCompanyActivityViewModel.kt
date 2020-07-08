@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nramos.mimoflix.binding.RecyclerDataBindingItem
 import com.nramos.mimoflix.extension.toBindingItem
-import com.nramos.mimoflix.model.company.LocalCompany
+import com.nramos.mimoflix.model.localcompany.LocalCompany
 import com.nramos.mimoflix.model.movie.Movie
 import com.nramos.mimoflix.model.movie.RoundedPosterViewModel
 import com.nramos.mimoflix.repo.movies.MovieRepository
@@ -33,7 +33,7 @@ class MoviesCompanyActivityViewModel(
         getMoviesByCompany()
     }
 
-    private fun getMoviesByCompany() {
+    fun getMoviesByCompany() {
         viewModelScope.launch {
             _movies.value = withContext(Dispatchers.IO) {
                 movieRepository.getMoviesPerCompany(company.id).map {

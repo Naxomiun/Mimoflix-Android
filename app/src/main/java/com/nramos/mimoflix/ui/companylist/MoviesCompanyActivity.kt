@@ -7,10 +7,8 @@ import android.util.Pair
 import androidx.appcompat.app.AppCompatActivity
 import com.nramos.mimoflix.R
 import com.nramos.mimoflix.databinding.ActivityMoviesCompanyListBinding
-import com.nramos.mimoflix.databinding.ActivityMoviesGenreListBinding
 import com.nramos.mimoflix.extension.observe
-import com.nramos.mimoflix.model.company.LocalCompany
-import com.nramos.mimoflix.model.localgenre.LocalGenre
+import com.nramos.mimoflix.model.localcompany.LocalCompany
 import com.nramos.mimoflix.ui.moviedetail.MovieDetailActivity
 import com.nramos.mimoflix.utils.StyleManager
 import org.koin.androidx.scope.lifecycleScope
@@ -36,6 +34,7 @@ class MoviesCompanyActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         setEvents()
+        setSwipe()
     }
 
     private fun setEvents() {
@@ -48,6 +47,15 @@ class MoviesCompanyActivity : AppCompatActivity() {
                     startActivity(intent, options.toBundle())
                 }
             }
+            observe(movies) {
+                binding.ptrLayout.isRefreshing = false
+            }
+        }
+    }
+
+    private fun setSwipe() {
+        binding.ptrLayout.setOnRefreshListener {
+            viewModel.getMoviesByCompany()
         }
     }
 
