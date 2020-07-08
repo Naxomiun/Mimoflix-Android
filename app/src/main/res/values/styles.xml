@@ -8,9 +8,9 @@
         <item name="colorControlHighlight">@color/colorAccent</item>
         <item name="colorBackgroundThemed">@color/lightBackgroundColor</item>
         <item name="colorCardThemed">@color/light_gray</item>
-        <item name="android:statusBarColor">?attr/colorBackgroundThemed</item>
+        <item name="android:statusBarColor">@color/black</item>
         <item name="android:windowActivityTransitions">true</item>
-        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:navigationBarColor">@color/black</item>
         <item name="android:windowContentTransitions">true</item>
         <item name="android:windowSharedElementEnterTransition">@transition/arc_transition</item>
         <item name="android:windowSharedElementExitTransition">@transition/arc_transition</item>
@@ -112,7 +112,7 @@
         <item name="android:windowSharedElementExitTransition">@transition/arc_transition</item>
     </style>
 
-    <style name="DetailActivity.Dark" parent="Mimoflix.Light">
+    <style name="DetailActivity.Dark" parent="Mimoflix.Dark">
         <item name="android:windowSharedElementEnterTransition">@transition/arc_transition</item>
         <item name="android:windowSharedElementExitTransition">@transition/arc_transition</item>
     </style>
@@ -216,6 +216,12 @@
         <item name="android:textSize">24sp</item>
         <item name="fontFamily">@font/gotham_bold</item>
         <item name="android:fontFamily">@font/gotham_bold</item>
+    </style>
+
+    <style name="SplashScreenTheme" parent="Mimoflix.Light">
+        <item name="android:navigationBarColor">@color/lightBackgroundColor</item>
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+        <item name="android:statusBarColor">@color/lightBackgroundColor</item>
     </style>
 
 </resources>
