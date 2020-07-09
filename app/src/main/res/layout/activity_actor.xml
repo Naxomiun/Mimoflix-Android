@@ -48,7 +48,7 @@
                 android:textColor="@color/black"
                 android:layout_marginStart="@dimen/detail_margin_between_sections"
                 android:layout_marginEnd="@dimen/detail_margin_between_sections"
-                android:fontFamily="@font/proxima_nova_bold"
+                android:fontFamily="@font/gotham_bold"
                 android:textSize="@dimen/actor_title_max_size"
                 android:gravity="center_vertical"
                 android:layout_width="0dp"

@@ -26,7 +26,7 @@
                 android:singleLine="true"
                 android:gravity="bottom"
                 app:minTextSize="@dimen/min_carousel_size_title"
-                android:fontFamily="@font/proxima_nova_bold"
+                android:fontFamily="@font/gotham_bold"
                 android:textSize="@dimen/max_carousel_size_title"
                 android:textAllCaps="true"
                 tools:text="DRIVE"

@@ -53,7 +53,7 @@
                 android:textColor="?attr/textColorThemed"
                 android:layout_marginStart="25dp"
                 android:layout_marginEnd="25dp"
-                android:fontFamily="@font/proxima_nova_bold"
+                android:fontFamily="@font/gotham_bold"
                 android:textSize="23sp"
                 android:gravity="center_vertical"
                 android:layout_width="0dp"

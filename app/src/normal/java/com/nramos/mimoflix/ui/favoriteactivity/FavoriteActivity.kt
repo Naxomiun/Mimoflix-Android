@@ -27,18 +27,6 @@ class FavoriteActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbarFavorites)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        setEvents()
-    }
-
-    private fun setEvents() {
-        with(viewModel) {
-            observe(movieActionEvent) {
-                it.getContentIfNotHandled()?.let { movie ->
-                    goTo<MovieDetailActivity>(Pair("movie", movie))
-                }
-            }
-        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
